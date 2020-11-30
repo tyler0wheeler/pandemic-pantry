@@ -23,10 +23,11 @@ export default function SearchRecipeList(props){
                 </Card.Header>
                 <Card.Description>
                    Searched ingredients include: {recipe.usedIngredientCount}
+
                    Other ingredients needed: {recipe.missedIngredientCount} 
                 </Card.Description>
                 <Image raised true
-                    src={recipe.image} />
+                    src={recipe.image} onClick={ () => props.showSingleRecipe(recipe.id)}/>
             </Card.Content>
               
             </Card>
