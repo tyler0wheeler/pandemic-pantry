@@ -1,7 +1,14 @@
 import React from 'react'
-import { Card, Image, Segment, Button } from 'semantic-ui-react'
+import { Card, Image, Segment, Button, List } from 'semantic-ui-react'
 
 export default function SingleSearchRecipe(props){
+    // const ingredients = () =>{
+    //     for (let i = 0; i < props.showThisRecipe.extendedIngredients.length; i++){
+    //         return (
+    //             <List.item>{props.showThisRecipe.extendedIngredients[i].original}</List.item>
+    //         )
+    //     }
+    // }
     return(
         <Segment> 
               <Card>
@@ -14,7 +21,11 @@ export default function SingleSearchRecipe(props){
                     </Card.Meta>
                     <Card.Meta>
                     Serves :{props.showThisRecipe.servings}
+                    
                     </Card.Meta>
+                    <List>
+                        
+                    </List>
                 <Card.Description>
                     {props.showThisRecipe.instructions}
                 </Card.Description>

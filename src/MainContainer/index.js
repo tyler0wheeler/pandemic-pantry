@@ -32,7 +32,7 @@ export default class MainContainer extends Component {
           const response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${this.state.searchIngredients}&number=1&ranking=1&ignorePantry=true`, {
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": "39fbd3d3e7msh279b93d85ec0aadp115acdjsn9506b29b04bb",
+                "x-rapidapi-key": RAPID_API,
                 "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
                 'Content-Type': 'application/json'
 
@@ -53,7 +53,7 @@ export default class MainContainer extends Component {
             const response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`, {
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-key": "39fbd3d3e7msh279b93d85ec0aadp115acdjsn9506b29b04bb",
+                    "x-rapidapi-key": RAPID_API,
                     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
                     'Content-Type': 'application/json'
                 }
