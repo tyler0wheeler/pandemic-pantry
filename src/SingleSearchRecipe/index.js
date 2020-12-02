@@ -2,18 +2,16 @@ import React from 'react'
 import { Card, Image, Segment, Button, List } from 'semantic-ui-react'
 
 export default function SingleSearchRecipe(props){
-    // const ingredients = () =>{
-    //     for (let i = 0; i < props.showThisRecipe.extendedIngredients.length; i++){
-    //         return (
-    //             <List.item>{props.showThisRecipe.extendedIngredients[i].original}</List.item>
-    //         )
-    //     }
-    // }
+    const ingredients = props.showThisRecipe.extendedIngredients.map(ingredient =>{
+            return (
+                <List.Item>{ingredient.originalString}</List.Item>
+            )
+    })
     return(
         <Segment> 
               <Card>
                 <Image 
-                    src={props.showThisRecipe.image} alt="90s pic"/>
+                    src={props.showThisRecipe.image} alt="food pic"/>
                 <Card.Content>
                     <Card.Header>{props.showThisRecipe.title}</Card.Header>
                     <Card.Meta>
@@ -24,7 +22,7 @@ export default function SingleSearchRecipe(props){
                     
                     </Card.Meta>
                     <List>
-                        
+                        {ingredients}
                     </List>
                 <Card.Description>
                     {props.showThisRecipe.instructions}
