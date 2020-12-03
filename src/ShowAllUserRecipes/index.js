@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Icon, Card, Button, Image } from 'semantic-ui-react'
+import {Card, Button, Image } from 'semantic-ui-react'
 
 
 
@@ -13,7 +13,7 @@ export default function ShowAllUserRecipes(props){
     return(
         <Card raised key={recipe.id} onClick={() => {} }>
             <Image 
-                    src={recipe.image} alt="food pic"/>
+                    src={recipe.image} onClick={ () => props.showSingleUserRecipe(recipe.id)} alt="food pic"/>
             <Card.Content textAlign={"center"}>
                 <Card.Header>
                     {recipe.title}
@@ -31,6 +31,12 @@ export default function ShowAllUserRecipes(props){
                     
                 </Card.Description>
             </Card.Content>
+            <Button 
+                    basic color={"red"}
+                    onClick={() => props.deleteMyRecipe(recipe.id)}>Delete</Button>
+                <Button
+                    basic color={"yellow"}
+                    onClick={() => props.editMyRecipe(recipe.id)}>Edit</Button>
             </Card>
         )
     })

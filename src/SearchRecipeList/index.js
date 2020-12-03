@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Icon, Card, Button, Image } from 'semantic-ui-react'
+import { Card, Button, Image } from 'semantic-ui-react'
 
 
 

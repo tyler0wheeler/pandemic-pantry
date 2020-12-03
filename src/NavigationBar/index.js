@@ -3,6 +3,7 @@ import {Container, Menu, Button}
 from 'semantic-ui-react'
 import LoginModal from '../LoginModal'
 import RegisterModal from '../RegisterModal'
+import NewRecipeModal from '../NewRecipeModal'
 
 
 
@@ -23,7 +24,6 @@ const NavigationBar = (props) => (
           props.loggedIn === true
           ?
           <React.Fragment>
-          
         <Button
           basic
           color="grey"
@@ -34,6 +34,8 @@ const NavigationBar = (props) => (
             color="grey"
             compact
             onClick ={() => props.showUserRecipes()}>My Posts</Button>
+            <NewRecipeModal
+          createUserRecipe={props.createUserRecipe}/>
         <Menu.Menu position="right">
           <Button
             id="logout-btn"

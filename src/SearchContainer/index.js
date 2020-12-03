@@ -21,7 +21,7 @@ export default class SearchContainer extends Component {
 
             },
             searchIngredients: '',
-            conditionalView: 'single recipe view',
+            conditionalView: 'none',
             idOfSearchedRecipeToShow: 156992
         }
     }
