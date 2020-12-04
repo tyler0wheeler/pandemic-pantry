@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+#single-view-card {
+  width: 45%;
+  background-color: rgb(247, 247, 198);
+}
+#item-recipe {
+  width: 39%;
+  background-color: rgb(247, 247, 198);
+}

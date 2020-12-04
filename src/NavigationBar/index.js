@@ -8,13 +8,14 @@ import NewRecipeModal from '../NewRecipeModal'
 
 
 const NavigationBar = (props) => (
-
-
-  <React.Fragment>
+<React.Fragment>
     <Menu
+      widths={5}
       position='left' 
-      fixed='top' inverted>
-      <Container>
+      fixed='top' 
+      color={"blue"}
+      >
+      
         <Menu.Item 
         header id='nav-title'
         >   
@@ -25,22 +26,24 @@ const NavigationBar = (props) => (
           ?
           <React.Fragment>
         <Button
+        size={"tiny"}
           basic
-          color="grey"
+          
           compact
            >Home</Button> 
           <Button
             basic
-            color="grey"
+            
             compact
             onClick ={() => props.showUserRecipes()}>My Posts</Button>
+            <Menu.Item>
             <NewRecipeModal
           createUserRecipe={props.createUserRecipe}/>
+          </Menu.Item>
         <Menu.Menu position="right">
           <Button
-            id="logout-btn"
+            
             basic
-            color="grey"
             compact
             onClick={() => props.logout()}>Log Out</Button>
           </Menu.Menu>
@@ -61,7 +64,7 @@ const NavigationBar = (props) => (
           </Menu.Menu>    
           </React.Fragment>
         } 
-      </Container>
+      
     </Menu>   
     </React.Fragment>
 )

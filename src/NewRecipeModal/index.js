@@ -74,9 +74,8 @@ export default function NewRecipeModal(props) {
         <Button
           content="Add Your Recipe"
           labelPosition='right'
-          icon='checkmark'
+          size="tiny"
           onClick={handleSubmit}
-          positive
         >
         Add Your Recipe
       </Button>
