@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Label, Button, Modal, TextArea } from 'semantic-ui-react'
+import { Form, Label, Button, Modal, TextArea, Checkbox } from 'semantic-ui-react'
 
 export default function EditRecipeModal(props) {
     // console.log("these are the props in editpostmodal: ", props)
@@ -36,7 +36,7 @@ export default function EditRecipeModal(props) {
             <Modal
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
-                
+                size="large"
                 open={() => props.editMyRecipe(props.recipeToEdit.id)}
                 >
             <Modal.Header>Edit Your Recipe</Modal.Header>
@@ -76,26 +76,35 @@ export default function EditRecipeModal(props) {
                 <Form.Field
                     name="instructions"
                     control={TextArea}
+                    size="large"
                     placeholder="Instructions"
                     onChange={handleInputChange}
                     value={instructions}
                 />
+                <Modal.Content id="checkbox" >
+                <Checkbox label="Share to Shared Recipes?"/>
+                </Modal.Content>
                 </Modal.Description>
             </Modal.Content>
+            <Modal.Content>
             <Modal.Actions>
-                <Button color='black' onClick={() => props.showUserRecipes()}>
+                <Button 
+                size="small" 
+                color='black'
+                onClick={() => props.showUserRecipes()}>
                 Don't Edit
                 </Button>
                 <Button
+                size="small"
                 content="Update Recipe"
                 labelPosition='right'
                 icon='checkmark'
                 onClick={handleSubmit}
-                positive
-                >
+                positive>
                 Update Recipe
-            </Button>
+                </Button>
             </Modal.Actions>
+            </Modal.Content>
                 </Form>  
             </Modal>
         )

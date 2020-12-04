@@ -206,7 +206,8 @@ export default class CookbookContainer extends Component{
               if(loginResponse.status === 200) {
                   this.setState({
                     loggedIn: true,
-                    loggedInUser: loginJson.data.username
+                    loggedInUser: loginJson.data.username,
+                    conditionalView: 'show user recipes'
                   })
                   console.log(loginJson.data);
                 //   this.getUserPost()

@@ -64,15 +64,20 @@ export default function RecipeToShowUser(props){
                    {props.showSingleUserRecipe.instructions}
                     
                 </Card.Description>
-                <Button onClick={() => props.closeSingleUserRecipe()}>Back To All My Recipes</Button>
+                <Card.Content>
+                
                 <Button
                 size={"tiny"} 
                 basic color={"red"}
                 onClick={() => props.deleteMyRecipe(props.showSingleUserRecipe.id, props.closeSingleUserRecipe())}>Delete</Button>
                 <Button
                 size={"tiny"}
-                basic color={"yellow"}
+                basic color={"green"}
                 onClick={() => props.editMyRecipe(props.showSingleUserRecipe.id)}>Edit</Button>
+                </Card.Content>
+                <Card.Content>
+                <Button onClick={() => props.closeSingleUserRecipe()}>Back To All My Recipes</Button>
+                </Card.Content>
             </Card.Content>
             </Card>
         )

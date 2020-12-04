@@ -10,7 +10,7 @@ import NewRecipeModal from '../NewRecipeModal'
 const NavigationBar = (props) => (
 <React.Fragment>
     <Menu
-      widths={5}
+      widths={7}
       position='left' 
       fixed='top' 
       color="blue"
@@ -21,10 +21,13 @@ const NavigationBar = (props) => (
         >   
           The Pandemic Pantry
         </Menu.Item>
+        <Menu.Item>
         <Button
           basic
+          compact
           onClick ={() => props.showAllRecipes()}
           compact >Shared Recipes</Button> 
+          </Menu.Item>
         {
           props.loggedIn === true
           ?

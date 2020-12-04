@@ -1,15 +1,24 @@
-import { Form, Label, Button, Modal, TextArea } from 'semantic-ui-react'
+import { Form, Label, Button, Modal, TextArea, Checkbox } from 'semantic-ui-react'
 import React, {useState} from 'react'
 
 export default function NewRecipeModal(props) {
   const [open, setOpen] = React.useState(false)
-    const initialInputState = { title: '', image: '', servings: 0, readyInMinutes: 0, owner: '', instructions: '' }
+    const initialInputState = { title: '', image: '', servings: 0, readyInMinutes: 0, owner: '', instructions: '', shared: false }
     const [eachEntry, setEachEntry] = useState(initialInputState)
-    const { title, image, servings, readyInMinutes, instructions} = eachEntry
+    const { title, image, servings, readyInMinutes, instructions, shared} = eachEntry
   
   const handleInputChange = e => {
   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
 }
+  const boxChecked = (e) =>{
+    setEachEntry({...eachEntry, shared: true})
+    console.log(eachEntry);
+  }
+  const boxUnChecked = (e) =>{
+    setEachEntry({...eachEntry, shared: false})
+    console.log(eachEntry);
+  }
+  
 
   const handleSubmit = e => {
     props.createUserRecipe(eachEntry)
@@ -19,6 +28,7 @@ export default function NewRecipeModal(props) {
 
   return (
     <Modal
+      centered
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -65,6 +75,9 @@ export default function NewRecipeModal(props) {
             onChange={handleInputChange}
             value={instructions}
           />
+          <Form.Field id="checkbox" >
+            <Checkbox value={shared} onChange={boxChecked} onClick={boxUnChecked} label="Share to Shared Recipes?"/>
+          </Form.Field>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -72,9 +85,11 @@ export default function NewRecipeModal(props) {
           Close
         </Button>
         <Button
-          content="Add Your Recipe"
+          size="small"
+          content="Update Recipe"
           labelPosition='right'
-          size="tiny"
+          icon='checkmark'  
+          positive
           onClick={handleSubmit}
         >
         Add Your Recipe
