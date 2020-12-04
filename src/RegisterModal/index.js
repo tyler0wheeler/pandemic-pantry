@@ -23,10 +23,12 @@ export default function RegisterModal(props) {
 
   return (
     <Modal
+        id="modal-background"
+        size="mini"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Register</Button>}
+        trigger={<Button color="olive">Register</Button>}
         >
         <Modal.Header >Register
             <Button
@@ -38,7 +40,7 @@ export default function RegisterModal(props) {
                 onClick={() => setOpen(false)}
                 />
         </Modal.Header>
-        <Modal.Content >
+        <Modal.Content  >
         <Segment placeholder>
 
         <Form>
@@ -65,7 +67,7 @@ export default function RegisterModal(props) {
 
           <Button 
             content='Register'
-            color='blue'
+            id="modal-button"
             primary
             onClick={handleSubmit}
             positive 

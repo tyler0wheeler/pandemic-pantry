@@ -22,14 +22,14 @@ export default function LoginModal(props) {
 
   return (
     <Modal
+        size="mini"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Sign On</Button>}
+        trigger={<Button color="olive">Sign On</Button>}
         >
         <Modal.Header >Sign On
             <Button
-
                 id='header-close'
                 icon='x'
                 floated='right'
@@ -63,7 +63,7 @@ export default function LoginModal(props) {
 
           <Button 
             content='Sign On'
-            color='blue'
+            id="modal-button"
             primary
             onClick={handleSubmit}
             positive 

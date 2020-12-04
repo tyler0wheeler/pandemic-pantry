@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  margin-top: 5%;
+  background-image: "https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
 }
 
 .App-logo {
@@ -38,10 +40,14 @@
 }
 
 #single-view-card {
-  width: 45%;
+  width: 40%;
   background-color: rgb(247, 247, 198);
 }
 #item-recipe {
-  width: 39%;
+  width: 33%;
   background-color: rgb(247, 247, 198);
+}
+#modal-button {
+  background-color: olive;
+  
 }

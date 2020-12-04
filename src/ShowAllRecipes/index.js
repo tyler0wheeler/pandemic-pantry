@@ -1,28 +1,13 @@
 import React from 'react'
-
-import {Card,Image, List, } from 'semantic-ui-react'
-
+import {Card, Button, Image, List, Form } from 'semantic-ui-react'
 
 
-
-export default function ShowAllUserRecipes(props){
-    // const initialInputState = { ingredient: '' }
-    // const [eachEntry, setEachEntry] = useState(initialInputState)
-    // const { ingredient } = eachEntry
-  
-    // const handleInputChange = e => {
-    // setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
-    // }
-    // const handleSubmit = (eachEntry, id) => {
-    //     props.addIngredient(eachEntry, id)
-    //     setEachEntry(initialInputState)
-    // } 
-   
-    const allRecipes = props.userRecipes.map(recipe => {
+export default function ShowAllRecipes(props){
+    const allRecipes = props.allRecipes.map(recipe => {
     const ingredients = props.ingredients.map(ingredient=> { 
         if (ingredient.recipe.id === recipe.id){
             return(
-                <List.Item key={ingredient.id}>{ingredient.ingredient}</List.Item>
+              <List.Item key={ingredient.id}>{ingredient.ingredient}</List.Item>
             )
         } else {
             return null
@@ -31,7 +16,7 @@ export default function ShowAllUserRecipes(props){
     return(
         <Card color={"yellow"} raised key={recipe.id} onClick={() => {} } id="item-recipe">
             <Image 
-                     src={recipe.image}  onClick={ () => props.showSingleUserRecipe(recipe.id)} alt="food pic"/>
+                     src={recipe.image}  onClick={ () => props.showSingleRecipe(recipe.id)} alt="food pic"/>
             <Card.Content textAlign={"center"}>
                 <Card.Header>
                     {recipe.title}
@@ -45,14 +30,6 @@ export default function ShowAllUserRecipes(props){
                 <Card.Meta>
                 Serves :{recipe.servings}
                 </Card.Meta>
-                <List>
-                {ingredients}
-                </List>
-                
-                <Card.Description>
-                   {recipe.instructions}
-                    
-                </Card.Description>
             </Card.Content>                    
             </Card>
             

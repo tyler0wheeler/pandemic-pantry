@@ -13,7 +13,7 @@ const NavigationBar = (props) => (
       widths={5}
       position='left' 
       fixed='top' 
-      color={"blue"}
+      color="blue"
       >
       
         <Menu.Item 
@@ -21,21 +21,23 @@ const NavigationBar = (props) => (
         >   
           The Pandemic Pantry
         </Menu.Item>
+        <Button
+          basic
+          onClick ={() => props.showAllRecipes()}
+          compact >Shared Recipes</Button> 
         {
           props.loggedIn === true
           ?
           <React.Fragment>
-        <Button
-        size={"tiny"}
-          basic
-          
-          compact
-           >Home</Button> 
+            <Menu.Item>
           <Button
             basic
-            
             compact
-            onClick ={() => props.showUserRecipes()}>My Posts</Button>
+            onClick ={() => props.showUserRecipes()}>My CookBook</Button>
+            </Menu.Item>
+            <Menu.Item>
+            Welcome, {props.loggedInUser}!
+            </Menu.Item>
             <Menu.Item>
             <NewRecipeModal
           createUserRecipe={props.createUserRecipe}/>

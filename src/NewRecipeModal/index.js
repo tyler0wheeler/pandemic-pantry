@@ -24,7 +24,7 @@ export default function NewRecipeModal(props) {
       open={open}
       trigger={<Button>Create Recipe</Button>}
     >
-      <Modal.Header>Create A New Recipe for your Cookbook</Modal.Header>
+      <Modal.Header>Create A New Recipe for your Cookbook. Don't Worry, You'll Add Your Ingredients Next!</Modal.Header>
     <Form>
       <Modal.Content>
         
