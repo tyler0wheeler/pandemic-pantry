@@ -10,15 +10,18 @@ export default function NewRecipeModal(props) {
   const handleInputChange = e => {
   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
 }
-  const boxChecked = (e) =>{
-    setEachEntry({...eachEntry, shared: true})
+  // const boxChecked = (e) =>{
+  //   setEachEntry({...eachEntry, shared: true})
+  //   console.log(eachEntry);
+  // }
+  // const boxUnChecked = (e) =>{
+  //   setEachEntry({...eachEntry, shared: false})
+  //   console.log(eachEntry);
+  // }
+  const handleChange = e =>{
+    setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
     console.log(eachEntry);
   }
-  const boxUnChecked = (e) =>{
-    setEachEntry({...eachEntry, shared: false})
-    console.log(eachEntry);
-  }
-  
 
   const handleSubmit = e => {
     props.createUserRecipe(eachEntry)
@@ -75,9 +78,32 @@ export default function NewRecipeModal(props) {
             onChange={handleInputChange}
             value={instructions}
           />
-          <Form.Field id="checkbox" >
+          {/*<Form.Field id="checkbox" >
             <Checkbox value={shared} onChange={boxChecked} onClick={boxUnChecked} label="Share to Shared Recipes?"/>
-          </Form.Field>
+          </Form.Field>*/}
+          <Form.Group inline>
+            <label>Share to Shared Recipes?</label>
+        <Form.Field>
+          <Checkbox
+            radio
+            label='Yes'
+            name="shared"
+            value={shared}
+            checked={true}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            radio
+            label='No'
+            name="shared"
+            value={shared}
+            checked={false}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        </Form.Group>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
