@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Container, Menu, Button}
+import React from 'react'
+import { Menu, Button}
 from 'semantic-ui-react'
 import LoginModal from '../LoginModal'
 import RegisterModal from '../RegisterModal'
@@ -7,19 +7,21 @@ import NewRecipeModal from '../NewRecipeModal'
 
 
 
-const NavigationBar = (props) => (
+export default function NavigationBar(props){
+  return(
 <React.Fragment>
     <Menu
-      widths={7}
+    className="nav-bar"
+      widths={6}
       position='left' 
       fixed='top' 
-      color="blue"
       >
       
         <Menu.Item 
-        header id='nav-title'
+        header 
+        id='title-navbar'
         >   
-          The Pandemic Pantry
+        The Pandemic Pantry
         </Menu.Item>
         <Menu.Item>
         <Button
@@ -45,33 +47,36 @@ const NavigationBar = (props) => (
             <NewRecipeModal
           createUserRecipe={props.createUserRecipe}/>
           </Menu.Item>
-        <Menu.Menu position="right">
+        <Menu.Item position="right">
           <Button
-            
+            id="logout-navbar"
             basic
             compact
             onClick={() => props.logout()}>Log Out</Button>
-          </Menu.Menu>
+          </Menu.Item>
         </React.Fragment>
         :   
         <React.Fragment>
-        <Menu.Menu position="right">  
+        <Menu.Menu position="right">
+           
         <LoginModal
           id="login-modal"
           login={props.login}
            />
+             
+           
         <RegisterModal
           id="reg-modal"
           login={props.login}
-          register={props.register}
-          
+          register={props.register} 
           />
+          
           </Menu.Menu>    
           </React.Fragment>
         } 
       
     </Menu>   
     </React.Fragment>
-)
+  )
+}
 
-export default NavigationBar

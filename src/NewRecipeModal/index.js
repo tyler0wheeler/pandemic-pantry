@@ -19,16 +19,6 @@ export default function NewRecipeModal(props) {
     console.log(eachEntry);
     console.log(shared);
   }
-  const boxUnChecked = () =>{
-    setEachEntry(({ shared, ...prevState }) => 
-      ({ ...prevState, shared: !shared})
-    )
-    console.log(eachEntry);
-  }
-  // const handleChange = e =>{
-  //   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
-  //   console.log(eachEntry);
-  // }
 
   const handleSubmit = e => {
     props.createUserRecipe(eachEntry)
@@ -85,44 +75,9 @@ export default function NewRecipeModal(props) {
             onChange={handleInputChange}
             value={instructions}
           />
-          {/*
-            {shared} === true
-            ?
-          <Form.Field id="checkbox-on" >
-            <Checkbox value={shared} onClick={boxChecked} label="Share to Shared Recipes?"/>
-          </Form.Field>
-            :
-            <Form.Field id="checkbox-off" >
-            <Checkbox value={shared} onClick={boxUnChecked} label="Share to Shared Recipes?"/>
-          </Form.Field>
-          */}
           <Form.Field id="checkbox-on" >
             <Checkbox  value={shared} onClick={boxChecked} label="Share to Shared Recipes?"/>
           </Form.Field>
-          
-          {/*<Form.Group inline>
-            <label>Share to Shared Recipes?</label>
-        <Form.Field >
-          <Checkbox
-            radio
-            label='Yes'
-            name="shared"
-            value={shared}
-            checked={true}
-            onChange={handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox
-            radio
-            label='No'
-            name="shared"
-            value={shared}
-            checked={false}
-            onChange={handleChange}
-          />
-        </Form.Field>
-          </Form.Group>*/}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions className="modal-actions">
@@ -136,10 +91,9 @@ export default function NewRecipeModal(props) {
           labelPosition='right'
           icon='checkmark'  
           positive
-          onClick={handleSubmit}
-        >
-        Add Your Recipe
-      </Button>
+          onClick={handleSubmit}>
+          Add Your Recipe
+        </Button>
       </Modal.Actions>
         </Form>  
     </Modal>

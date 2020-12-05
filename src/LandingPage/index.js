@@ -6,7 +6,7 @@ import Fade from 'react-reveal/Fade';
 export default function LandingPage(props){
     return(
         <React.Fragment>
-        <Container textAlign="center">
+        <Container textAlign="center" className="landing-page-container">
             <Fade top>
             <h1>Welcome to the Pandemic kitchen</h1>
             </Fade>

@@ -3,10 +3,7 @@ import React, { useState } from 'react'
 import { Form, Label, Button, Modal, TextArea, Checkbox } from 'semantic-ui-react'
 
 export default function EditRecipeModal(props) {
-    // console.log("these are the props in editpostmodal: ", props)
     const [open, setOpen] = React.useState(false)
-    // console.log(setOpen)
-        // variables for useState (form fields and their respective current state values)
         const initialInputState = { 
             title: props.recipeToEdit.title, 
             image: props.recipeToEdit.image, 
@@ -42,7 +39,6 @@ export default function EditRecipeModal(props) {
 
     return (
             <Modal
-                
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 size="large"

@@ -69,12 +69,12 @@ export default function RecipeToShowUser(props){
                 <Card.Content>
                 
                 <Button
-                size={"tiny"} 
-                basic color={"red"}
+                className="delete-modal-open-button"
+                size={"small"} 
                 onClick={() => props.deleteMyRecipe(props.showSingleUserRecipe.id, props.closeSingleUserRecipe())}>Delete</Button>
                 <Button
-                size={"tiny"}
-                basic color={"green"}
+                className="edit-modal-open-button"
+                size={"small"}
                 onClick={() => props.editMyRecipe(props.showSingleUserRecipe.id)}>Edit</Button>
                 </Card.Content>
                 <Card.Content>

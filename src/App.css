@@ -1,7 +1,6 @@
 .App {
   text-align: center;
-  margin-top: 7%;
-  
+  margin-top: 80px;
 }
 
 .App-logo {
@@ -26,30 +25,27 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #single-view-card {
-  width: 40%;
+  width: 35%;
   background-color: rgb(247, 247, 198);
 }
 #item-recipe {
-  width: 33%;
+  width: 27%;
   background-color: rgb(247, 247, 198);
 }
-#modal-button {
-  background-color: olive;
-  
+.modal-submit-login-register {
+  background-color: olive !important;
+  color: white !important;  
+}
+.modal-submit-login-register:hover{
+  background-color: rgb(164, 164, 27) !important;
+} 
+.login-register-modal-buttons{
+  background-color: olive !important;
+  color: white !important;    
+}
+.login-register-modal-buttons:hover{
+  background-color: rgb(164, 164, 27) !important; 
 }
 #checkbox-on {
   padding-bottom: 2%;
@@ -85,4 +81,32 @@
 }
 #edit-new-button{
   background: olive !important;
+}
+.nav-bar{
+  background-color: rgb(247, 247, 198) !important;
+  height: auto;
+
+}
+#title-navbar{
+  font-style: bold !important;
+  font-size: 125%;
+}
+
+.edit-modal-open-button{
+  background-color: olive !important;
+  color: white !important;
+}
+.edit-modal-open-button:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+.delete-modal-open-button{
+  background-color: rgba(172, 23, 23, 0.845) !important;
+  color: white !important;
+}
+.delete-modal-open-button:hover{
+  background-color: rgb(255, 0, 0) !important;
+}
+.landing-page-container{
+  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
+  
 }
