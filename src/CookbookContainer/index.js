@@ -6,6 +6,7 @@ import RecipeToShowUser from '../RecipeToShowUser'
 import EditRecipeModal from '../EditRecipeModal'
 import ShowAllRecipes from '../ShowAllRecipes'
 import RecipeToShow from '../RecipeToShow'
+import LandingPage from '../LandingPage'
 
 
 export default class CookbookContainer extends Component{
@@ -17,7 +18,7 @@ export default class CookbookContainer extends Component{
             ingredients:[],
             loggedIn: false,
             loggedInUser: null,
-            conditionalView: '',
+            conditionalView: 'landing page',
             idOfRecipeToShow: -1,
             idOfRecipeToEdit: -1
         }
@@ -245,7 +246,7 @@ export default class CookbookContainer extends Component{
                 this.setState({
                     loggedInUser: null,
                     loggedIn: false,
-                    conditionalView: ''
+                    conditionalView: 'landing page'
     
                 })
                 console.log(logoutJson)
@@ -314,7 +315,11 @@ export default class CookbookContainer extends Component{
                 showUserRecipes={this.showUserRecipes}
                 showAllRecipes={this.showAllRecipes}
                 />
-                <SearchContainer/>
+            {
+                this.state.conditionalView === 'landing page'
+                &&
+                <LandingPage/>
+            }
             {
                 this.state.conditionalView === 'show all recipes'
                 &&
@@ -361,12 +366,14 @@ export default class CookbookContainer extends Component{
             {
                 this.state.idOfRecipeToShow !== -1 && this.state.conditionalView === 'edit this recipe'
                 &&
+                
                 <EditRecipeModal
                 recipeToEdit={this.state.userRecipes.find((recipe)=> recipe.id === this.state.idOfRecipeToEdit)}
                 showUserRecipes={this.showUserRecipes}
                 updateMyRecipe={this.updateMyRecipe}
                 editMyRecipe={this.editMyRecipe}
                 />
+                
             }
                 </React.Fragment>
         )

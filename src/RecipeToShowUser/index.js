@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import Fade from 'react-reveal/Fade';
 import {Card, Button, Image, List, Form } from 'semantic-ui-react'
 
 
@@ -37,6 +37,7 @@ export default function RecipeToShowUser(props){
         }
     })
     return(
+        <Fade left>
         <Card raised key={props.showSingleUserRecipe.id} centered={true} id="single-view-card">
             <Image 
                     src={props.showSingleUserRecipe.image} alt="food pic"/>
@@ -60,6 +61,7 @@ export default function RecipeToShowUser(props){
                 <List>
                 {ingredients}
                 </List>
+                <h5 id="list-item">Instructions</h5>
                 <Card.Description>
                    {props.showSingleUserRecipe.instructions}
                     
@@ -80,5 +82,6 @@ export default function RecipeToShowUser(props){
                 </Card.Content>
             </Card.Content>
             </Card>
+            </Fade>
         )
     }

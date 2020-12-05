@@ -9,19 +9,26 @@ export default function NewRecipeModal(props) {
   
   const handleInputChange = e => {
   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
+  // when the box is checked, shared should be true
+  console.log(shared);
 }
-  // const boxChecked = (e) =>{
-  //   setEachEntry({...eachEntry, shared: true})
-  //   console.log(eachEntry);
-  // }
-  // const boxUnChecked = (e) =>{
-  //   setEachEntry({...eachEntry, shared: false})
-  //   console.log(eachEntry);
-  // }
-  const handleChange = e =>{
-    setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
+  const boxChecked = (e) =>{
+    setEachEntry(({ shared, ...prevState }) => 
+      ({ ...prevState, shared: !shared})
+    )
+    console.log(eachEntry);
+    console.log(shared);
+  }
+  const boxUnChecked = () =>{
+    setEachEntry(({ shared, ...prevState }) => 
+      ({ ...prevState, shared: !shared})
+    )
     console.log(eachEntry);
   }
+  // const handleChange = e =>{
+  //   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
+  //   console.log(eachEntry);
+  // }
 
   const handleSubmit = e => {
     props.createUserRecipe(eachEntry)
@@ -37,9 +44,9 @@ export default function NewRecipeModal(props) {
       open={open}
       trigger={<Button>Create Recipe</Button>}
     >
-      <Modal.Header>Create A New Recipe for your Cookbook. Don't Worry, You'll Add Your Ingredients Next!</Modal.Header>
+      <Modal.Header className="modal-header">Create A New Recipe for your Cookbook. Don't Worry, You'll Add Your Ingredients Next!</Modal.Header>
     <Form>
-      <Modal.Content>
+      <Modal.Content className="modal-content">
         
         <Modal.Description>
           <Label htmlFor="title">Recipe Title</Label>
@@ -78,12 +85,24 @@ export default function NewRecipeModal(props) {
             onChange={handleInputChange}
             value={instructions}
           />
-          {/*<Form.Field id="checkbox" >
-            <Checkbox value={shared} onChange={boxChecked} onClick={boxUnChecked} label="Share to Shared Recipes?"/>
-          </Form.Field>*/}
-          <Form.Group inline>
+          {/*
+            {shared} === true
+            ?
+          <Form.Field id="checkbox-on" >
+            <Checkbox value={shared} onClick={boxChecked} label="Share to Shared Recipes?"/>
+          </Form.Field>
+            :
+            <Form.Field id="checkbox-off" >
+            <Checkbox value={shared} onClick={boxUnChecked} label="Share to Shared Recipes?"/>
+          </Form.Field>
+          */}
+          <Form.Field id="checkbox-on" >
+            <Checkbox  value={shared} onClick={boxChecked} label="Share to Shared Recipes?"/>
+          </Form.Field>
+          
+          {/*<Form.Group inline>
             <label>Share to Shared Recipes?</label>
-        <Form.Field>
+        <Form.Field >
           <Checkbox
             radio
             label='Yes'
@@ -103,14 +122,15 @@ export default function NewRecipeModal(props) {
             onChange={handleChange}
           />
         </Form.Field>
-        </Form.Group>
+          </Form.Group>*/}
         </Modal.Description>
       </Modal.Content>
-      <Modal.Actions>
+      <Modal.Actions className="modal-actions">
         <Button color='black' onClick={() => setOpen(false)}>
           Close
         </Button>
         <Button
+          id="edit-new-button"
           size="small"
           content="Update Recipe"
           labelPosition='right'

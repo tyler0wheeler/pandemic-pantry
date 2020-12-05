@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card, Button, Image, List, Form } from 'semantic-ui-react'
+import Fade from 'react-reveal/Fade';
+import {Card,Image, List} from 'semantic-ui-react'
 
 
 export default function ShowAllRecipes(props){
@@ -14,6 +15,7 @@ export default function ShowAllRecipes(props){
         }
     })
     return(
+        
         <Card color={"yellow"} raised key={recipe.id} onClick={() => {} } id="item-recipe">
             <Image 
                      src={recipe.image}  onClick={ () => props.showSingleRecipe(recipe.id)} alt="food pic"/>
@@ -32,13 +34,17 @@ export default function ShowAllRecipes(props){
                 </Card.Meta>
             </Card.Content>                    
             </Card>
+           
             
         )
     })
     return(
+        <Fade left>
+            <h1>Community Cookbook</h1>
         <Card.Group centered={true}>
             {allRecipes}
         </Card.Group>
+        </Fade>
     )
 
 }

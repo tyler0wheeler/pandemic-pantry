@@ -28,7 +28,7 @@ export default function LoginModal(props) {
         open={open}
         trigger={<Button color="olive">Sign On</Button>}
         >
-        <Modal.Header >Sign On
+        <Modal.Header className="modal-header">Sign On
             <Button
                 id='header-close'
                 icon='x'
@@ -37,7 +37,7 @@ export default function LoginModal(props) {
                 onClick={() => setOpen(false)}
                 />
         </Modal.Header>
-        <Modal.Content >
+        <Modal.Content className="modal-content">
         <Segment placeholder>
 
         <Form>

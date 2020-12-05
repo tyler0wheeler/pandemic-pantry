@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Fade from 'react-reveal/Fade';
 import {Card,Image, List, } from 'semantic-ui-react'
 
 
@@ -22,7 +22,7 @@ export default function ShowAllUserRecipes(props){
     const ingredients = props.ingredients.map(ingredient=> { 
         if (ingredient.recipe.id === recipe.id){
             return(
-                <List.Item key={ingredient.id}>{ingredient.ingredient}</List.Item>
+                <List.Item id="list-item" key={ingredient.id}>{ingredient.ingredient}</List.Item>
             )
         } else {
             return null
@@ -46,9 +46,10 @@ export default function ShowAllUserRecipes(props){
                 Serves :{recipe.servings}
                 </Card.Meta>
                 <List>
+                <h5 id="list-item">Ingredients</h5>
                 {ingredients}
                 </List>
-                
+                <h5 id="list-item">Instructions</h5>
                 <Card.Description>
                    {recipe.instructions}
                     
@@ -59,9 +60,12 @@ export default function ShowAllUserRecipes(props){
         )
     })
     return(
+        <Fade left>
+            <h1>My Cookbook</h1>
         <Card.Group centered={true}>
             {allRecipes}
         </Card.Group>
+        </Fade>
     )
 
 }

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  margin-top: 5%;
+  margin-top: 7%;
   
 }
 
@@ -51,6 +51,38 @@
   background-color: olive;
   
 }
-#checkbox {
+#checkbox-on {
   padding-bottom: 2%;
+  background: rgb(247, 247, 198) !important;
+}
+#checkbox-off {
+  padding-bottom: 2%;
+  background: rgb(247, 247, 198) !important;
+}
+#list-item{
+  color: black;
+  font-style: italic;
+}
+#landing-paragraph {
+  font-size: 20px;
+}
+.modal-header{
+  background: olive !important;
+  color: white !important;
+  text-align: center;
+}
+.modal-content{
+  background: rgb(247, 247, 198) !important;
+}
+.modal-actions{
+  background: rgb(247, 247, 198) !important;
+}
+#landing-page-image{
+  width: 30%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#edit-new-button{
+  background: olive !important;
 }
