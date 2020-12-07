@@ -107,6 +107,13 @@
   background-color: rgb(255, 0, 0) !important;
 }
 .landing-page-container{
-  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
-  
+  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important; 
+}
+#search-field{
+  max-width: 40% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.hidden-form{
+  display: none;
 }

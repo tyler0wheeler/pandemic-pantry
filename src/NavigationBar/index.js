@@ -12,7 +12,7 @@ export default function NavigationBar(props){
 <React.Fragment>
     <Menu
     className="nav-bar"
-      widths={6}
+      widths={8}
       position='left' 
       fixed='top' 
       >
@@ -30,6 +30,13 @@ export default function NavigationBar(props){
           onClick ={() => props.showAllRecipes()}
           compact >Shared Recipes</Button> 
           </Menu.Item>
+          <Menu.Item>
+          <Button
+          basic
+          compact
+          onClick ={() => props.showSearchContainer()}
+          compact >Search Spoonacular</Button> 
+          </Menu.Item>
         {
           props.loggedIn === true
           ?
@@ -41,13 +48,19 @@ export default function NavigationBar(props){
             onClick ={() => props.showUserRecipes()}>My CookBook</Button>
             </Menu.Item>
             <Menu.Item>
+          <Button
+            basic
+            compact
+            onClick ={() => props.showUserRecipes()}>Saved Recipes</Button>
+            </Menu.Item>
+            <Menu.Item>
             Welcome, {props.loggedInUser}!
             </Menu.Item>
             <Menu.Item>
             <NewRecipeModal
           createUserRecipe={props.createUserRecipe}/>
           </Menu.Item>
-        <Menu.Item position="right">
+          <Menu.Item position="right">
           <Button
             id="logout-navbar"
             basic

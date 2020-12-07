@@ -182,9 +182,7 @@ export default class CookbookContainer extends Component{
                 console.log("Error in deleting ingredient", err);
             }
         }
-
-
-
+// --------------------------------------------------------------------------------------------//
 
 
         login = async (loginInfo) => {
@@ -255,6 +253,7 @@ export default class CookbookContainer extends Component{
     
                 }    
             }
+// --------------------------------------------------------------------------------------------//            
         editMyRecipe = (id) => {
             // console.log("You are trying to edit a post with the id of: ", idOfPostToEdit)
             this.setState({
@@ -297,6 +296,11 @@ export default class CookbookContainer extends Component{
                 conditionalView: 'show user recipes'
             })
         }
+        showSearchContainer = () =>{
+            this.setState({
+                conditionalView: 'show search container'
+            })
+        }
         componentDidMount() {
             this.getAllRecipes()           
         }
@@ -314,11 +318,20 @@ export default class CookbookContainer extends Component{
                 loggedInUser={this.state.loggedInUser}
                 showUserRecipes={this.showUserRecipes}
                 showAllRecipes={this.showAllRecipes}
+                showSearchContainer={this.showSearchContainer}
                 />
             {
                 this.state.conditionalView === 'landing page'
                 &&
                 <LandingPage/>
+            }
+            {
+                this.state.conditionalView === 'show search container'
+                &&
+                <SearchContainer
+                currentUser={this.state.currentUser}
+                loggedIn={this.state.loggedIn}
+                />
             }
             {
                 this.state.conditionalView === 'show all recipes'
