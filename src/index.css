@@ -7,8 +7,8 @@ body {
   font-family: 'Libre Baskerville', serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(250, 250, 250) !important;
-  background-image: url("https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500") !important;
+  background-color: rgb(191 190 129) !important;
+  /* background-image: url("https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500") !important; */
   background-size: cover !important;
   image-rendering: auto !important;
   image-rendering: crisp-edges !important;
@@ -20,6 +20,7 @@ body {
 }
 h1 {
   font-family: 'Libre Baskerville', serif !important;
+  text-shadow: 1px 1px 4px rgb(247, 247, 198) !important;
 }
 
 code {

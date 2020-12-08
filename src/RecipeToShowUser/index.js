@@ -42,7 +42,7 @@ export default function RecipeToShowUser(props){
             <Image 
                     src={props.showSingleUserRecipe.image} alt="food pic"/>
             <Card.Content textAlign={"center"}>
-                <Card.Header>
+                <Card.Header id="card-header">
                     {props.showSingleUserRecipe.title}
                 </Card.Header>
                 

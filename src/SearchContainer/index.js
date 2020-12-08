@@ -26,8 +26,8 @@ export default class SearchContainer extends Component {
             savedRecipes: [],
             savedIngredients: [],
             searchIngredients: '',
-            conditionalView: 'single recipe view',
-            idOfSearchedRecipeToShow: 156992,
+            conditionalView: '',
+            idOfSearchedRecipeToShow: -1,
             currentUser: props.currentUser,
             loggedIn: props.loggedIn,
             searchContainerConditionalView: props.searchContainerConditionalView
@@ -208,12 +208,20 @@ export default class SearchContainer extends Component {
         }
     componentDidMount(){
         this.getSavedRecipes()
+        console.log("This is the search conditional view", this.state.searchContainerConditionalView);
+        console.log("This is the conditional view", this.state.conditionalView);
     }
     render(){
         return(
             <React.Fragment>
             {
-                this.state.conditionalView === ''
+                this.state.searchContainerConditionalView === 'show saved recipes'
+                &&
+                <SavedSearchedRecipes
+                savedRecipes={this.state.savedRecipes}/>
+            }
+            {
+                this.state.searchContainerConditionalView === 'show search container'
                 &&
             <Fade bottom>
             <Form className="search-bar">
@@ -229,7 +237,7 @@ export default class SearchContainer extends Component {
                     />
                 </Form.Field>
                 <Button
-                id="edit-new-button"
+                id="search-button"
                 size="small"
                 content="Search Recipes"
                 labelPosition='right'
@@ -256,12 +264,6 @@ export default class SearchContainer extends Component {
                 addIngredient={this.addIngredient}
                 loggedIn={this.state.loggedIn}
                 />
-            }
-            {
-
-                
-                <SavedSearchedRecipes
-                savedRecipes={this.state.savedRecipes}/>
             }
         </React.Fragment>
         )

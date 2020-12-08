@@ -20,7 +20,7 @@ export default function ShowAllRecipes(props){
             <Image 
                      src={recipe.image}  onClick={ () => props.showSingleRecipe(recipe.id)} alt="food pic"/>
             <Card.Content textAlign={"center"}>
-                <Card.Header>
+                <Card.Header id="card-header">
                     {recipe.title}
                 </Card.Header>
                 <Card.Meta>

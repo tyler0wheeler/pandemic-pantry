@@ -52,9 +52,6 @@ export default function LoginModal(props) {
             placeholder='Username'
           />
           <Form.Input
-            
-            
-            
             required
             icon='lock'
             iconPosition='left'

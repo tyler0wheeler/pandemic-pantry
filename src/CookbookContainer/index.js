@@ -276,7 +276,8 @@ export default class CookbookContainer extends Component{
         }
         showAllRecipes = () => {
             this.setState({
-                conditionalView: 'show all recipes'
+                conditionalView: 'show all recipes',
+                searchContainerConditionalView: ""
             })
             this.getAllRecipes()
         }
@@ -289,7 +290,8 @@ export default class CookbookContainer extends Component{
         }
         showUserRecipes = () => {
             this.setState({
-                conditionalView: 'show user recipes'
+                conditionalView: 'show user recipes',
+                searchContainerConditionalView: ""
             })
         }
         showSingleUserRecipe = (id) => {
@@ -311,7 +313,8 @@ export default class CookbookContainer extends Component{
         }
         showSearchContainer = () =>{
             this.setState({
-                conditionalView: 'show search container'
+                conditionalView: 'show search container',
+                searchContainerConditionalView: 'show search container'
             })
         }
         componentDidMount() {
@@ -322,7 +325,7 @@ export default class CookbookContainer extends Component{
                 conditionalView: 'show search container',
                 searchContainerConditionalView: "show saved recipes"
             })
-            console.log(this.state.searchContainerConditionalView);
+            console.log("Saved Recipe button clicked");
         }
         closeErrorModals = () => {
             this.setState({

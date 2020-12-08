@@ -61,7 +61,8 @@
   font-style: italic;
 }
 #landing-paragraph {
-  font-size: 20px;
+  text-shadow: 1px 1px 4px rgb(247, 247, 198) !important;
+  font-size: 22px;
 }
 .modal-header{
   background: olive !important;
@@ -75,8 +76,10 @@
   background: rgb(247, 247, 198) !important;
 }
 #landing-page-image{
-  width: 30%;
+  width: 25%;
   height: auto;
+  transform: rotate(90deg) !important;
+  border-radius: 5% !important;
   margin-left: auto;
   margin-right: auto;
 }
@@ -114,10 +117,7 @@
   text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
   font-family: 'Josefin Sans', sans-serif !important;
 }
-#landing-page-paragraph{
-  font-size: large !important;
-  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
-}
+
 #landing-page-title{
   font-size: 40px !important;
   text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
@@ -230,4 +230,15 @@
   text-align: center !important;
   font-style: bold !important;
   font-size: 18px !important;
+}
+#search-button {
+  background-color: olive !important;
+  font-family: 'Libre Baskerville', serif !important;
+  color: white !important;  
+}
+#search-button:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#card-header{
+  font-family: 'Libre Baskerville', serif !important;
 }

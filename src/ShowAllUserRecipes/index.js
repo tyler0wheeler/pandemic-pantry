@@ -32,8 +32,8 @@ export default function ShowAllUserRecipes(props){
         <Card color={"yellow"} raised key={recipe.id} onClick={() => {} } id="item-recipe">
             <Image 
                      src={recipe.image}  onClick={ () => props.showSingleUserRecipe(recipe.id)} alt="food pic"/>
-            <Card.Content textAlign={"center"}>
-                <Card.Header>
+            <Card.Content textAlign={"center"} >
+                <Card.Header id="card-header">
                     {recipe.title}
                 </Card.Header>
                 <Card.Meta>
