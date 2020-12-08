@@ -26,8 +26,8 @@ export default class SearchContainer extends Component {
             savedRecipes: [],
             savedIngredients: [],
             searchIngredients: '',
-            conditionalView: '',
-            idOfSearchedRecipeToShow: -1,
+            conditionalView: 'single recipe view',
+            idOfSearchedRecipeToShow: 156992,
             currentUser: props.currentUser,
             loggedIn: props.loggedIn,
             searchContainerConditionalView: props.searchContainerConditionalView
@@ -259,8 +259,7 @@ export default class SearchContainer extends Component {
             }
             {
 
-                this.state.conditionalView === 'show saved recipes'
-                &&
+                
                 <SavedSearchedRecipes
                 savedRecipes={this.state.savedRecipes}/>
             }

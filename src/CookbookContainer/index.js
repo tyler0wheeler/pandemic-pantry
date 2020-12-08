@@ -7,7 +7,8 @@ import EditRecipeModal from '../EditRecipeModal'
 import ShowAllRecipes from '../ShowAllRecipes'
 import RecipeToShow from '../RecipeToShow'
 import LandingPage from '../LandingPage'
-
+import LoginError from '../ErrorMessages/LoginError.js'
+import RegisterError from '../ErrorMessages/RegisterError.js'
 
 export default class CookbookContainer extends Component{
     constructor(){
@@ -21,7 +22,8 @@ export default class CookbookContainer extends Component{
             conditionalView: 'landing page',
             idOfRecipeToShow: -1,
             idOfRecipeToEdit: -1,
-            searchContainerConditionalView: ''
+            searchContainerConditionalView: '',
+            errorMessage: ''
         }
     }
         getAllRecipes = async () =>{
@@ -203,7 +205,7 @@ export default class CookbookContainer extends Component{
               const loginJson = await loginResponse.json()
               console.log("loginJson", loginJson);
           
-              if(loginResponse.status === 200) {
+              if(loginResponse.status === 200 || loginResponse.status === 201) {
                   this.setState({
                     loggedIn: true,
                     loggedInUser: loginJson.data.username,
@@ -211,6 +213,10 @@ export default class CookbookContainer extends Component{
                   })
                   console.log(loginJson.data);
                 //   this.getUserPost()
+                } else {
+                    this.setState({
+                        errorMessage: 'login error'
+                    })
                 }
             } catch(error) {
               console.error("Error trying to log in")
@@ -230,11 +236,17 @@ export default class CookbookContainer extends Component{
                     body: JSON.stringify(registerUser)
                 })
             const registerUserJson = await registerUserResponse.json()
+                if(registerUserResponse.status === 201 || registerUserResponse.status === 200){
+                    this.login(registerUser)
+                } else {
+                    this.setState({
+                        errorMessage: 'register error'
+                    })
+                }
             console.log(registerUserJson);
             } catch (err){
                 console.log("Error in registering", registerUser);
             }
-            this.login(registerUser)
         }
         logout = async () =>{
             console.log("Logout has occured for this username");
@@ -311,6 +323,12 @@ export default class CookbookContainer extends Component{
                 searchContainerConditionalView: "show saved recipes"
             })
             console.log(this.state.searchContainerConditionalView);
+        }
+        closeErrorModals = () => {
+            this.setState({
+                conditionalView: 'landing page',
+                errorMessage: ''
+            })
         }
 
 
@@ -397,6 +415,20 @@ export default class CookbookContainer extends Component{
                 editMyRecipe={this.editMyRecipe}
                 />
                 
+            }
+            {
+                this.state.errorMessage === 'login error'
+                &&
+                <LoginError 
+                closeErrorModals={this.closeErrorModals}
+                />
+            }
+            {
+                this.state.errorMessage === 'register error'
+                &&
+                <RegisterError
+                closeErrorModals={this.closeErrorModals}
+                />
             }
                 </React.Fragment>
         )

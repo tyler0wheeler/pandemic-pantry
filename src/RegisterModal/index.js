@@ -43,6 +43,7 @@ export default function RegisterModal(props) {
 
         <Form>
           <Form.Input
+            required
             icon='user'
             iconPosition='left'
             label='Username'
@@ -53,6 +54,7 @@ export default function RegisterModal(props) {
            
           />
           <Form.Input
+            required
             icon='lock'
             iconPosition='left'
             label='Password'

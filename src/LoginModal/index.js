@@ -42,6 +42,7 @@ export default function LoginModal(props) {
 
         <Form>
           <Form.Input
+            required
             icon='user'
             iconPosition='left'
             label='Username'
@@ -51,6 +52,10 @@ export default function LoginModal(props) {
             placeholder='Username'
           />
           <Form.Input
+            
+            
+            
+            required
             icon='lock'
             iconPosition='left'
             label='Password'

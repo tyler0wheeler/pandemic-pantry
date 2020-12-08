@@ -205,3 +205,29 @@
 #back-button:hover{
   background-color: rgb(75, 75, 71) !important;
 }
+.error-modal-header{
+  font-family: 'Libre Baskerville', serif !important;
+  background: olive !important;
+  color: white !important;
+  text-align: center;
+}
+.error-modal-content{
+  background: rgb(247, 247, 198) !important;
+}
+.error-modal-actions{
+  background: rgb(247, 247, 198) !important;
+}
+.error-modal-buttons{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: rgb(62, 62, 57) !important;
+  color: white !important
+}
+.error-modal-buttons:hover{
+  background-color: rgb(75, 75, 71) !important;
+}
+#error-modal-paragraph{
+  font-family: 'Libre Baskerville', serif !important;
+  text-align: center !important;
+  font-style: bold !important;
+  font-size: 18px !important;
+}
