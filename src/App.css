@@ -122,6 +122,9 @@
   font-size: 40px !important;
   text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
 }
+.search-bar{
+  padding-top: 2% !important;
+}
 #search-field{
   max-width: 40% !important;
   margin-left: auto !important;

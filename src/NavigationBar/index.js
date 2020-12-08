@@ -12,7 +12,7 @@ export default function NavigationBar(props){
 <React.Fragment>
     <Menu
     className="nav-bar"
-      widths={8}
+      widths={7}
       position='left' 
       fixed='top' 
       >
@@ -50,13 +50,7 @@ export default function NavigationBar(props){
             compact
             onClick ={() => props.showUserRecipes()}>My CookBook</Button>
             </Menu.Item>
-            <Menu.Item>
-          <Button
-            id="saved-recipes"
-            basic
-            compact
-            onClick ={() => props.showSavedRecipes()}>Saved Recipes</Button>
-            </Menu.Item>
+            
             <Menu.Item>
             <NewRecipeModal
           createUserRecipe={props.createUserRecipe}/>

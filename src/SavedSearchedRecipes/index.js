@@ -22,7 +22,17 @@ export default function SavedSearchedRecipes(props){
     console.log("these are the ingredients",props.savedRecipes.title);
     console.log("These are the props", props);
     const allRecipes = props.savedRecipes.map(recipe => {
-    console.log(recipe.ingredients);
+    const removeCharacter = (recipe.ingredients).slice(0 ,-1);
+    const sliceFirst = removeCharacter.slice(1)
+    const newArr = sliceFirst.toString().split(', ')
+    console.log(newArr);
+    const ingredients = newArr.map(ingredient=> {
+        const firstCharacter = ingredient.slice(0, -1)
+        const lastCharacter = firstCharacter.slice(1)
+        return(
+            <List.Item id="list-item">{lastCharacter}</List.Item>
+        )
+    })    
     return(
         <Card  raised key={recipe.id} id="item-recipe">
             <Image 
@@ -39,7 +49,7 @@ export default function SavedSearchedRecipes(props){
                 </Card.Meta>
                 <List>
                 <h5 id="list-item">Ingredients</h5>
-                {recipe.ingredients}
+                {ingredients}
 
                 </List>
                 <h5 id="list-item">Instructions</h5>

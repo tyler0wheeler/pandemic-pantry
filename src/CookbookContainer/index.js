@@ -22,7 +22,6 @@ export default class CookbookContainer extends Component{
             conditionalView: 'landing page',
             idOfRecipeToShow: -1,
             idOfRecipeToEdit: -1,
-            searchContainerConditionalView: '',
             errorMessage: ''
         }
     }
@@ -277,7 +276,7 @@ export default class CookbookContainer extends Component{
         showAllRecipes = () => {
             this.setState({
                 conditionalView: 'show all recipes',
-                searchContainerConditionalView: ""
+                
             })
             this.getAllRecipes()
         }
@@ -291,7 +290,7 @@ export default class CookbookContainer extends Component{
         showUserRecipes = () => {
             this.setState({
                 conditionalView: 'show user recipes',
-                searchContainerConditionalView: ""
+                
             })
         }
         showSingleUserRecipe = (id) => {
@@ -314,18 +313,11 @@ export default class CookbookContainer extends Component{
         showSearchContainer = () =>{
             this.setState({
                 conditionalView: 'show search container',
-                searchContainerConditionalView: 'show search container'
+                
             })
         }
         componentDidMount() {
             this.getAllRecipes()           
-        }
-        showSavedRecipes = () => {
-            this.setState({
-                conditionalView: 'show search container',
-                searchContainerConditionalView: "show saved recipes"
-            })
-            console.log("Saved Recipe button clicked");
         }
         closeErrorModals = () => {
             this.setState({
@@ -348,7 +340,7 @@ export default class CookbookContainer extends Component{
                 showUserRecipes={this.showUserRecipes}
                 showAllRecipes={this.showAllRecipes}
                 showSearchContainer={this.showSearchContainer}
-                showSavedRecipes={this.showSavedRecipes}
+                
                 />
             {
                 this.state.conditionalView === 'landing page'
@@ -361,7 +353,6 @@ export default class CookbookContainer extends Component{
                 <SearchContainer
                 currentUser={this.state.currentUser}
                 loggedIn={this.state.loggedIn}
-                searchContainerConditionalView={this.state.searchContainerConditionalView}
                 />
             }
             {

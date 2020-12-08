@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Fade from 'react-reveal/Fade';
-import { Form, Label, Button} from 'semantic-ui-react'
+import { Form, Button} from 'semantic-ui-react'
 import SearchRecipeList from '../SearchRecipeList'
 import SingleSearchRecipe from '../SingleSearchRecipe'
 import SavedSearchedRecipes from '../SavedSearchedRecipes'
@@ -30,7 +30,7 @@ export default class SearchContainer extends Component {
             idOfSearchedRecipeToShow: -1,
             currentUser: props.currentUser,
             loggedIn: props.loggedIn,
-            searchContainerConditionalView: props.searchContainerConditionalView
+            // searchContainerConditionalView: props.searchContainerConditionalView
         }
     }
     handleInputChange = (event) => {
@@ -205,30 +205,19 @@ export default class SearchContainer extends Component {
             this.setState({
                 conditionalView: 'show saved recipes'
             })
+            this.getSavedRecipes()
         }
-    componentDidMount(){
-        this.getSavedRecipes()
-        console.log("This is the search conditional view", this.state.searchContainerConditionalView);
-        console.log("This is the conditional view", this.state.conditionalView);
-    }
+    // componentDidMount(){
+    //     this.getSavedRecipes()
+    // }
     render(){
         return(
             <React.Fragment>
-            {
-                this.state.searchContainerConditionalView === 'show saved recipes'
-                &&
-                <SavedSearchedRecipes
-                savedRecipes={this.state.savedRecipes}/>
-            }
-            {
-                this.state.searchContainerConditionalView === 'show search container'
-                &&
             <Fade bottom>
+                <h1>Search Spoonacular</h1>
             <Form className="search-bar">
                 <Form.Field id="search-field">
-                    <Label htmlFor="word">Search</Label>
                     <Form.Input
-
                     name="word" 
                     type="search"
                     placeholder="Enter ingredients separated by commas" 
@@ -245,6 +234,11 @@ export default class SearchContainer extends Component {
                 onClick={this.search}
                 positive>
                 </Button>
+                {
+                    this.state.loggedIn === true
+                    &&
+                <Button onClick={this.showSavedSearchRecipes()}>Saved Searched Recipes</Button>
+                }
             {/*<input name="word" type="search" value={this.state.searchIngredients} onChange={this.handleInputChange}/>
             <input type="button" value="Search" onClick={this.search} />*/}
             <SearchRecipeList
@@ -253,9 +247,9 @@ export default class SearchContainer extends Component {
             />
             </Form>
             </Fade>
-            }
+            
             {
-                this.state.idOfRecipeToShow !== -1 && this.state.conditionalView === "single recipe view"
+                this.state.idOfSearchedRecipeToShow !== -1 && this.state.conditionalView === "single recipe view"
                 &&
                 <SingleSearchRecipe
                 showThisRecipe={this.state.singleRecipe}
@@ -265,6 +259,12 @@ export default class SearchContainer extends Component {
                 loggedIn={this.state.loggedIn}
                 />
             }
+            {
+                this.state.conditionalView === 'show saved recipes'
+                &&            
+                <SavedSearchedRecipes
+                savedRecipes={this.state.savedRecipes}/>
+            }    
         </React.Fragment>
         )
     }
