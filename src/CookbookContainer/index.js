@@ -4,6 +4,9 @@ import SearchContainer from '../SearchContainer'
 import ShowAllUserRecipes from '../ShowAllUserRecipes'
 import RecipeToShowUser from '../RecipeToShowUser'
 import EditRecipeModal from '../EditRecipeModal'
+import ShowAllRecipes from '../ShowAllRecipes'
+import RecipeToShow from '../RecipeToShow'
+import LandingPage from '../LandingPage'
 
 
 export default class CookbookContainer extends Component{
@@ -12,11 +15,13 @@ export default class CookbookContainer extends Component{
         this.state = {
             allRecipes: [],
             userRecipes: [],
+            ingredients:[],
             loggedIn: false,
             loggedInUser: null,
-            conditionalView: '',
+            conditionalView: 'landing page',
             idOfRecipeToShow: -1,
-            idOfRecipeToEdit: -1
+            idOfRecipeToEdit: -1,
+            searchContainerConditionalView: ''
         }
     }
         getAllRecipes = async () =>{
@@ -25,7 +30,8 @@ export default class CookbookContainer extends Component{
                 const recipesResponse = await fetch(url)
                 const recipesJson = await recipesResponse.json()
                 this.setState({
-                    allRecipes: recipesJson.data
+                    allRecipes: recipesJson.data.recipes,
+                    ingredients: recipesJson.data.ingredients
                 })
                 console.log(recipesJson)
             }catch(err){
@@ -41,12 +47,13 @@ export default class CookbookContainer extends Component{
                 })
                 const recipesJson= await recipesResponse.json()
                 this.setState({
-                    userRecipes: recipesJson.data
-                    // likes: postsJson.data.likes
+                    userRecipes: recipesJson.data.recipes,
+                    ingredients: recipesJson.data.ingredients
             })
             } catch (err){
                 console.log("Error getting User Recipes data", err)
             }
+            console.log(this.state.ingredients);
         }
         createUserRecipe = async (recipeToAdd) =>{
             try{
@@ -72,31 +79,41 @@ export default class CookbookContainer extends Component{
             }
             this.getUserRecipes()
         }
-        deleteMyRecipe = async (id) => {
+        deleteMyRecipe = async (id, func) => {
             try {
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/recipes/" + id
+                const ingredientUrl = process.env.REACT_APP_API_URL + "/pandemic-pantry/recipes/delete-all-ingredients/" + id
                 const deleteMyRecipeResponse = await fetch(url, {
                     credentials: 'include',
                     method: "DELETE"
                 })
+                const deleteIngredientsWithRecipe = await fetch(ingredientUrl, {
+                    credentials: 'include',
+                    method: "DELETE"
+                })
                 const deleteMyRecipeJson = await deleteMyRecipeResponse.json()
-                console.log("I want to delet this recipe: ", deleteMyRecipeJson)
-                console.log(deleteMyRecipeJson.status);
-                if(deleteMyRecipeJson.status === 200) {
+                const deleteIngredientsJson = await deleteIngredientsWithRecipe.json()
+                console.log("I want to delete this recipe: ", deleteMyRecipeJson)
+                console.log("I want to delete these ingredients: ", deleteIngredientsJson)
+                if(deleteMyRecipeJson.status && deleteIngredientsJson.status === 200) {
+                    
                     this.setState({
-                        userRecipes: this.state.userRecipes.filter(recipe => recipe.id !== id),
-                        // likes: this.state.likes.filter(like => like.user.id !==id),
                         conditionalView: 'show user recipes',
                         idOfRecipeToShow: -1
                         
+                        })
+                    this.setState({
+                        allRecipes: this.state.allRecipes.filter(recipe => recipe.id !== id),
+                        userRecipes: this.state.userRecipes.filter(recipe => recipe.id !== id),
+                        ingredients: this.state.ingredients.filter(ingredient => ingredient.recipe.id !== id)
                     })
-                    console.log(this.state.userRecipes);              
+                                  
                 }
             } catch(err) {
                 console.log("There was an error deleting the recipe", id)
             }
             console.log(this.state.conditionalView);
-            // console.log(this.state.userRecipes);
+            
             this.getUserRecipes()
         }
 
@@ -124,10 +141,49 @@ export default class CookbookContainer extends Component{
             }
             this.getUserRecipes() 
         }
-
-
-
-
+// --------------------------------------------------------------------------------------------//
+        addIngredient = async (ingredientAdded, id) => {
+            try {
+                const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/recipes/ingredient/" + id
+                const addIngredientResponse = await fetch(url, {
+                    credentials: 'include',
+                    method: "POST",
+                    body: JSON.stringify(ingredientAdded),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const addIngredientJson = await addIngredientResponse.json()
+                console.log("This is addIngredientJson", addIngredientJson);
+                if(addIngredientResponse.status === 200){
+                    this.setState({
+                        ingredients: [...this.state.ingredients, addIngredientJson.data]
+                    })
+                }
+            } catch(err){
+                console.log("Error adding ingredient", err);
+            }
+            this.getUserRecipes()
+        }
+        deleteSingleIngredient = async (id) => {
+            try {
+                const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/recipes/delete-ingredient/" + id
+                const deleteIngredientResponse = await fetch(url, {
+                    credentials: 'include',
+                    method: "DELETE"
+                })
+                const deleteIngredientJson = await deleteIngredientResponse.json()
+                console.log("I want to delete this recipe: ", deleteIngredientJson)
+                if(deleteIngredientResponse.status === 200)
+                this.setState({
+                    ingredients: this.state.ingredients.filter(ingredient => ingredient.id !== id)
+                })
+                this.getUserRecipes()
+            } catch(err){
+                console.log("Error in deleting ingredient", err);
+            }
+        }
+// --------------------------------------------------------------------------------------------//
 
 
         login = async (loginInfo) => {
@@ -150,7 +206,8 @@ export default class CookbookContainer extends Component{
               if(loginResponse.status === 200) {
                   this.setState({
                     loggedIn: true,
-                    loggedInUser: loginJson.data.username
+                    loggedInUser: loginJson.data.username,
+                    conditionalView: 'show user recipes'
                   })
                   console.log(loginJson.data);
                 //   this.getUserPost()
@@ -188,7 +245,7 @@ export default class CookbookContainer extends Component{
                 this.setState({
                     loggedInUser: null,
                     loggedIn: false,
-                    conditionalView: ''
+                    conditionalView: 'landing page'
     
                 })
                 console.log(logoutJson)
@@ -197,6 +254,7 @@ export default class CookbookContainer extends Component{
     
                 }    
             }
+// --------------------------------------------------------------------------------------------//            
         editMyRecipe = (id) => {
             // console.log("You are trying to edit a post with the id of: ", idOfPostToEdit)
             this.setState({
@@ -204,7 +262,19 @@ export default class CookbookContainer extends Component{
                 conditionalView: "edit this recipe"
             })
         }
-
+        showAllRecipes = () => {
+            this.setState({
+                conditionalView: 'show all recipes'
+            })
+            this.getAllRecipes()
+        }
+        showSingleRecipe = (id) => {
+            console.log("you are trying to show recipe with id: ", id)
+            this.setState({
+                idOfRecipeToShow: id,
+                conditionalView: 'show this recipe'
+                })    
+        }
         showUserRecipes = () => {
             this.setState({
                 conditionalView: 'show user recipes'
@@ -215,12 +285,32 @@ export default class CookbookContainer extends Component{
             this.setState({
                 idOfRecipeToShow: id,
                 conditionalView: 'show this user recipe'
-                })
+                })    
+        }
+        closeSingleRecipe = () => {
+            this.setState({
+                conditionalView: 'show all recipes'
+            })
         }
         closeSingleUserRecipe = () =>{
             this.setState({
                 conditionalView: 'show user recipes'
             })
+        }
+        showSearchContainer = () =>{
+            this.setState({
+                conditionalView: 'show search container'
+            })
+        }
+        componentDidMount() {
+            this.getAllRecipes()           
+        }
+        showSavedRecipes = () => {
+            this.setState({
+                conditionalView: 'show search container',
+                searchContainerConditionalView: "show saved recipes"
+            })
+            console.log(this.state.searchContainerConditionalView);
         }
 
 
@@ -235,36 +325,78 @@ export default class CookbookContainer extends Component{
                 loggedIn={this.state.loggedIn}
                 loggedInUser={this.state.loggedInUser}
                 showUserRecipes={this.showUserRecipes}
+                showAllRecipes={this.showAllRecipes}
+                showSearchContainer={this.showSearchContainer}
+                showSavedRecipes={this.showSavedRecipes}
                 />
-                <h4>{this.state.loggedInUser}</h4>
-                <SearchContainer/>
+            {
+                this.state.conditionalView === 'landing page'
+                &&
+                <LandingPage/>
+            }
+            {
+                this.state.conditionalView === 'show search container'
+                &&
+                <SearchContainer
+                currentUser={this.state.currentUser}
+                loggedIn={this.state.loggedIn}
+                searchContainerConditionalView={this.state.searchContainerConditionalView}
+                />
+            }
+            {
+                this.state.conditionalView === 'show all recipes'
+                &&
+                <ShowAllRecipes
+                allRecipes={this.state.allRecipes}
+                ingredients={this.state.ingredients}
+                showSingleRecipe={this.showSingleRecipe}
+                />
+            }
+            
             {   
                 this.state.conditionalView === 'show user recipes'
                 &&
                 <ShowAllUserRecipes
                 userRecipes={this.state.userRecipes}
                 showSingleUserRecipe={this.showSingleUserRecipe}
-                editMyRecipe={this.editMyRecipe}
-                deleteMyRecipe={this.deleteMyRecipe}
+                ingredients={this.state.ingredients}
+                addIngredient={this.addIngredient}
+                deleteSingleIngredient={this.deleteSingleIngredient}
                 />
             }
             {
-                this.state.idOfRecipeToShow !== -1 && this.state.conditionalView === 'show this user recipe'
+                (this.state.idOfRecipeToShow !== -1 && this.state.conditionalView === 'show this user recipe')
                 &&
                 <RecipeToShowUser
-                showSingleUserRecipe={this.state.userRecipes.filter((recipe) => recipe.id === this.state.idOfRecipeToShow)}
+                showSingleUserRecipe={this.state.userRecipes.find((recipe) => recipe.id === this.state.idOfRecipeToShow)}
+                ingredients={this.state.ingredients}
                 closeSingleUserRecipe={this.closeSingleUserRecipe}
+                deleteMyRecipe={this.deleteMyRecipe}
+                editMyRecipe={this.editMyRecipe}
+                addIngredient={this.addIngredient}
+                deleteSingleIngredient={this.deleteSingleIngredient}
                 />
             }
             {
-                this.state.idOfRecipeToEdit !== -1 && this.state.conditionalView === 'edit this recipe'
+                this.setState.idOfRecipeToShow !== -1 && this.state.conditionalView === 'show this recipe'
                 &&
+                <RecipeToShow
+                showSingleRecipe={this.state.allRecipes.find((recipe) => recipe.id === this.state.idOfRecipeToShow)}
+                ingredients={this.state.ingredients}
+                closeSingleRecipe={this.closeSingleRecipe}
+                />
+            }
+            {
+                this.state.idOfRecipeToShow !== -1 && this.state.conditionalView === 'edit this recipe'
+                &&
+                
                 <EditRecipeModal
                 recipeToEdit={this.state.userRecipes.find((recipe)=> recipe.id === this.state.idOfRecipeToEdit)}
                 showUserRecipes={this.showUserRecipes}
                 updateMyRecipe={this.updateMyRecipe}
                 editMyRecipe={this.editMyRecipe}
                 />
+                
             }
                 </React.Fragment>
         )

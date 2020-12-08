@@ -1,15 +1,24 @@
-import { Form, Label, Button, Modal, TextArea } from 'semantic-ui-react'
+import { Form, Label, Button, Modal, TextArea, Checkbox } from 'semantic-ui-react'
 import React, {useState} from 'react'
 
 export default function NewRecipeModal(props) {
   const [open, setOpen] = React.useState(false)
-    const initialInputState = { title: '', image: '', servings: 0, readyInMinutes: 0, owner: '', instructions: '' }
+    const initialInputState = { title: '', image: '', servings: 0, readyInMinutes: 0, owner: '', instructions: '', shared: false }
     const [eachEntry, setEachEntry] = useState(initialInputState)
-    const { title, image, servings, readyInMinutes, instructions} = eachEntry
+    const { title, image, servings, readyInMinutes, instructions, shared} = eachEntry
   
   const handleInputChange = e => {
   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
+  // when the box is checked, shared should be true
+  console.log(shared);
 }
+  const boxChecked = (e) =>{
+    setEachEntry(({ shared, ...prevState }) => 
+      ({ ...prevState, shared: !shared})
+    )
+    console.log(eachEntry);
+    console.log(shared);
+  }
 
   const handleSubmit = e => {
     props.createUserRecipe(eachEntry)
@@ -19,14 +28,15 @@ export default function NewRecipeModal(props) {
 
   return (
     <Modal
+      centered
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Create Recipe</Button>}
+      trigger={<Button id="create-recipe-button">Create Recipe</Button>}
     >
-      <Modal.Header>Create A New Recipe for your Cookbook</Modal.Header>
+      <Modal.Header className="modal-header">Create A New Recipe for your Cookbook. Don't Worry, You'll Add Your Ingredients Next!</Modal.Header>
     <Form>
-      <Modal.Content>
+      <Modal.Content className="modal-content">
         
         <Modal.Description>
           <Label htmlFor="title">Recipe Title</Label>
@@ -65,21 +75,25 @@ export default function NewRecipeModal(props) {
             onChange={handleInputChange}
             value={instructions}
           />
+          <Form.Field id="checkbox-on" >
+            <Checkbox  value={shared} onClick={boxChecked} label="Share to Shared Recipes?"/>
+          </Form.Field>
         </Modal.Description>
       </Modal.Content>
-      <Modal.Actions>
+      <Modal.Actions className="modal-actions">
         <Button color='black' onClick={() => setOpen(false)}>
           Close
         </Button>
         <Button
-          content="Add Your Recipe"
+          id="edit-new-button"
+          size="small"
+          content="Update Recipe"
           labelPosition='right'
-          icon='checkmark'
-          onClick={handleSubmit}
+          icon='checkmark'  
           positive
-        >
-        Add Your Recipe
-      </Button>
+          onClick={handleSubmit}>
+          Add Your Recipe
+        </Button>
       </Modal.Actions>
         </Form>  
     </Modal>

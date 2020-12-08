@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Container, Menu, Button}
+import React from 'react'
+import { Menu, Button}
 from 'semantic-ui-react'
 import LoginModal from '../LoginModal'
 import RegisterModal from '../RegisterModal'
@@ -7,63 +7,92 @@ import NewRecipeModal from '../NewRecipeModal'
 
 
 
-const NavigationBar = (props) => (
-
-
-  <React.Fragment>
+export default function NavigationBar(props){
+  return(
+<React.Fragment>
     <Menu
+    className="nav-bar"
+      widths={8}
       position='left' 
-      fixed='top' inverted>
-      <Container>
+      fixed='top' 
+      >
+      
         <Menu.Item 
-        header id='nav-title'
+        header 
+        id='title-navbar'
         >   
-          The Pandemic Pantry
+        The Pandemic Pantry
         </Menu.Item>
+        <Menu.Item>
+        <Button
+          id="shared-recipes"
+          basic
+          compact
+          onClick ={() => props.showAllRecipes()}
+          compact >Shared Recipes</Button> 
+          </Menu.Item>
+          <Menu.Item>
+          <Button
+          id="search-spoonacular"
+          basic
+          compact
+          onClick ={() => props.showSearchContainer()}
+          compact >Search Spoonacular</Button> 
+          </Menu.Item>
         {
           props.loggedIn === true
           ?
           <React.Fragment>
-        <Button
-          basic
-          color="grey"
-          compact
-           >Home</Button> 
+            <Menu.Item>
           <Button
+            id="my-cookbook"
             basic
-            color="grey"
             compact
-            onClick ={() => props.showUserRecipes()}>My Posts</Button>
+            onClick ={() => props.showUserRecipes()}>My CookBook</Button>
+            </Menu.Item>
+            <Menu.Item>
+          <Button
+            id="saved-recipes"
+            basic
+            compact
+            onClick ={() => props.showSavedRecipes()}>Saved Recipes</Button>
+            </Menu.Item>
+            <Menu.Item>
             <NewRecipeModal
           createUserRecipe={props.createUserRecipe}/>
-        <Menu.Menu position="right">
+          </Menu.Item>
+          <Menu.Item id="welcome-user">
+            Welcome, {props.loggedInUser}!
+            </Menu.Item>
+          <Menu.Item position="right">
           <Button
-            id="logout-btn"
+            id="logout-navbar"
             basic
-            color="grey"
             compact
             onClick={() => props.logout()}>Log Out</Button>
-          </Menu.Menu>
+          </Menu.Item>
         </React.Fragment>
         :   
         <React.Fragment>
-        <Menu.Menu position="right">  
+        <Menu.Menu position="right">
+           
         <LoginModal
           id="login-modal"
           login={props.login}
            />
+             
+           
         <RegisterModal
           id="reg-modal"
-          login={props.login}
-          register={props.register}
-          
+          register={props.register} 
           />
+          
           </Menu.Menu>    
           </React.Fragment>
         } 
-      </Container>
+      
     </Menu>   
     </React.Fragment>
-)
+  )
+}
 
-export default NavigationBar

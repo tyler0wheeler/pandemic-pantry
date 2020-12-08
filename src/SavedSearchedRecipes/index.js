@@ -5,7 +5,7 @@ import {Card,Image, List, } from 'semantic-ui-react'
 
 
 
-export default function ShowAllUserRecipes(props){
+export default function SavedSearchedRecipes(props){
     // const initialInputState = { ingredient: '' }
     // const [eachEntry, setEachEntry] = useState(initialInputState)
     // const { ingredient } = eachEntry
@@ -16,29 +16,21 @@ export default function ShowAllUserRecipes(props){
     // const handleSubmit = (eachEntry, id) => {
     //     props.addIngredient(eachEntry, id)
     //     setEachEntry(initialInputState)
-    // } 
-   
-    const allRecipes = props.userRecipes.map(recipe => {
-    const ingredients = props.ingredients.map(ingredient=> { 
-        if (ingredient.recipe.id === recipe.id){
-            return(
-                <List.Item id="list-item" key={ingredient.id}>{ingredient.ingredient}</List.Item>
-            )
-        } else {
-            return null
-        }
-    })
+    // }
+    // const index = props.savedRecipes.ingredients.charAt(0)
+    // console.log(index); 
+    console.log("these are the ingredients",props.savedRecipes.title);
+    console.log("These are the props", props);
+    const allRecipes = props.savedRecipes.map(recipe => {
+    console.log(recipe.ingredients);
     return(
-        <Card color={"yellow"} raised key={recipe.id} onClick={() => {} } id="item-recipe">
+        <Card  raised key={recipe.id} id="item-recipe">
             <Image 
-                     src={recipe.image}  onClick={ () => props.showSingleUserRecipe(recipe.id)} alt="food pic"/>
+                     src={recipe.image} alt="food pic"/>
             <Card.Content textAlign={"center"}>
                 <Card.Header>
                     {recipe.title}
                 </Card.Header>
-                <Card.Meta>
-                Created by: {recipe.owner.username}
-                </Card.Meta>
                 <Card.Meta>
                 Ready in {recipe.readyInMinutes} minutes
                 </Card.Meta>
@@ -47,7 +39,8 @@ export default function ShowAllUserRecipes(props){
                 </Card.Meta>
                 <List>
                 <h5 id="list-item">Ingredients</h5>
-                {ingredients}
+                {recipe.ingredients}
+
                 </List>
                 <h5 id="list-item">Instructions</h5>
                 <Card.Description>
@@ -61,7 +54,7 @@ export default function ShowAllUserRecipes(props){
     })
     return(
         <Fade left>
-            <h1>My Cookbook</h1>
+            <h1>My Saved Recipes</h1>
         <Card.Group centered={true}>
             {allRecipes}
         </Card.Group>

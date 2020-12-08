@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 100px !important;
 }
 
 .App-logo {
@@ -24,15 +25,183 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#single-view-card {
+  width: 35%;
+  background-color: rgb(247, 247, 198);
+}
+#item-recipe {
+  width: 27%;
+  background-color: rgb(247, 247, 198);
+}
+.modal-submit-login-register {
+  background-color: olive !important;
+  color: white !important;  
+}
+.modal-submit-login-register:hover{
+  background-color: rgb(164, 164, 27) !important;
+} 
+.login-register-modal-buttons{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;    
+}
+.login-register-modal-buttons:hover{
+  background-color: rgb(164, 164, 27) !important; 
+}
+#checkbox-on {
+  padding-bottom: 2%;
+  background: rgb(247, 247, 198) !important;
+}
+#checkbox-off {
+  padding-bottom: 2%;
+  background: rgb(247, 247, 198) !important;
+}
+#list-item{
+  color: black;
+  font-style: italic;
+}
+#landing-paragraph {
+  font-size: 20px;
+}
+.modal-header{
+  background: olive !important;
+  color: white !important;
+  text-align: center;
+}
+.modal-content{
+  background: rgb(247, 247, 198) !important;
+}
+.modal-actions{
+  background: rgb(247, 247, 198) !important;
+}
+#landing-page-image{
+  width: 30%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#edit-new-button{
+  background: olive !important;
+}
+.nav-bar{
+  background-color: rgb(247, 247, 198) !important;
+  height: auto;
+
+}
+#title-navbar{
+  font-style: bold !important;
+  font-size: large !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edit-modal-open-button{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+.edit-modal-open-button:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+.delete-modal-open-button{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: rgba(172, 23, 23, 0.845) !important;
+  color: white !important;
+}
+.delete-modal-open-button:hover{
+  background-color: rgb(255, 0, 0) !important;
+}
+.landing-page-container{
+  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
+  font-family: 'Josefin Sans', sans-serif !important;
+}
+#landing-page-paragraph{
+  font-size: large !important;
+  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
+}
+#landing-page-title{
+  font-size: 40px !important;
+  text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
+}
+#search-field{
+  max-width: 40% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.hidden-form{
+  display: none;
+}
+#my-cookbook{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+#my-cookbook:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#search-spoonacular{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+#search-spoonacular:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#shared-recipes{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+#shared-recipes:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#logout-navbar{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+#logout-navbar:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#saved-recipes{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+#saved-recipes:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#create-recipe-button{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important;
+}
+#create-recipe-button:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#welcome-user{
+  font-size: large !important;
+  font-family: 'Libre Baskerville', serif !important;
+}
+#add-ingredient-button{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: olive !important;
+  color: white !important
+}
+#add-ingredient-button:hover{
+  background-color: rgb(164, 164, 27) !important;
+}
+#delete-ingredient{
+  background-color: rgba(172, 23, 23, 0.845) !important;
+  color: white !important;
+}
+#delete-ingredient:hover{
+  background-color: rgb(255, 0, 0) !important;
+}
+#back-button{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: rgb(62, 62, 57) !important;
+  color: white !important
+}
+#back-button:hover{
+  background-color: rgb(75, 75, 71) !important;
 }

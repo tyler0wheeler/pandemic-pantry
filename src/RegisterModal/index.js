@@ -14,31 +14,31 @@ export default function RegisterModal(props) {
     }
      const handleSubmit = (e) =>{
         e.preventDefault()
-        //lifting up state
         props.register(eachEntry)
-        // props.login(eachEntry)
         setOpen(false)
     }
 
 
   return (
     <Modal
+        
+        size="mini"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Register</Button>}
+        trigger={<Button className="login-register-modal-buttons">Register</Button>}
         >
-        <Modal.Header >Register
+        <Modal.Header className="modal-header" >Register
             <Button
 
                 id='header-close'
                 icon='x'
                 floated='right'
-                size='mini'
+                size='tiny'
                 onClick={() => setOpen(false)}
                 />
         </Modal.Header>
-        <Modal.Content >
+        <Modal.Content className="modal-content" >
         <Segment placeholder>
 
         <Form>
@@ -65,7 +65,7 @@ export default function RegisterModal(props) {
 
           <Button 
             content='Register'
-            color='blue'
+            className="modal-submit-login-register"
             primary
             onClick={handleSubmit}
             positive 

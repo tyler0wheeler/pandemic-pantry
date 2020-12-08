@@ -22,22 +22,22 @@ export default function LoginModal(props) {
 
   return (
     <Modal
+        size="mini"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Sign On</Button>}
+        trigger={<Button className="login-register-modal-buttons">Sign On</Button>}
         >
-        <Modal.Header >Sign On
+        <Modal.Header className="modal-header">Sign On
             <Button
-
                 id='header-close'
                 icon='x'
                 floated='right'
-                size='mini'
+                size='tiny'
                 onClick={() => setOpen(false)}
                 />
         </Modal.Header>
-        <Modal.Content >
+        <Modal.Content className="modal-content">
         <Segment placeholder>
 
         <Form>
@@ -57,13 +57,11 @@ export default function LoginModal(props) {
             name = 'password'
             onChange = {handleInputChange}
             value = {password}
-            type='password'
-            
+            type='password'          
           />
-
           <Button 
             content='Sign On'
-            color='blue'
+            className="modal-submit-login-register"
             primary
             onClick={handleSubmit}
             positive 
