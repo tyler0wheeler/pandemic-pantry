@@ -3,28 +3,34 @@ import Fade from 'react-reveal/Fade';
 import { Card, Image, Button, List, Form } from 'semantic-ui-react'
 
 export default function SingleSearchRecipe(props){
+    const ingredientToAdd = props.showThisRecipe.extendedIngredients.map(ingredient =>{
+        return(
+            ingredient.originalString
+        )
+    })
     const initialInputState = { 
         title: props.showThisRecipe.title, 
         image: props.showThisRecipe.image, 
         readyInMinutes: props.showThisRecipe.readyInMinutes, 
         servings: props.showThisRecipe.servings,
         instructions: props.showThisRecipe.instructions,
-        recipeId: props.showThisRecipe.id
+        recipeId: props.showThisRecipe.id,
+        ingredients: ingredientToAdd
     }
     const [eachEntry, setEachEntry] = useState(initialInputState)
-    const { title, image, servings, readyInMinutes, instructions, recipeId} = eachEntry
+    const { title, image, servings, readyInMinutes, instructions, recipeId, ingredients} = eachEntry
     
     const handleInputChange = e => {
         setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
         console.log(ingredients);
       }
-    const ingredientToAdd = props.showThisRecipe.extendedIngredients.map(ingredient =>{
-        return(
-            ingredient.originalString
-        )
-    }) 
+    // const ingredientToAdd = props.showThisRecipe.extendedIngredients.map(ingredient =>{
+    //     return(
+    //         ingredient.originalString
+    //     )
+    // }) 
       
-    const ingredients = props.showThisRecipe.extendedIngredients.map(ingredient =>{
+    const ingredientsMap = props.showThisRecipe.extendedIngredients.map(ingredient =>{
             return (
                 <List.Item id="list-item" key={ingredient.recipeId}>{ingredient.originalString}</List.Item>
             )
@@ -32,7 +38,7 @@ export default function SingleSearchRecipe(props){
     const handleSubmit = e =>{
         props.saveRecipe(eachEntry)
         console.log(ingredientToAdd);
-        props.addIngredient(ingredientToAdd, props.showThisRecipe.id)
+        // props.addIngredient(ingredientToAdd, props.showThisRecipe.id)
     }
     return(
         <React.Fragment>
@@ -51,17 +57,17 @@ export default function SingleSearchRecipe(props){
                     </Card.Meta>
                     <List>
                     <h5 id="list-item">Ingredients</h5>
-                        {ingredients}
+                        {ingredientsMap}
                     </List>
                     <h5 id="list-item">Instructions</h5>
                 <Card.Description>
                     {props.showThisRecipe.instructions}
                 </Card.Description>
-                <Button onClick={props.closeShowModal}>Back</Button>
+                <Button id="back-button" onClick={props.closeShowModal}>Back</Button>
                 {
                     props.loggedIn === true
                     &&
-                <Button id="save-recipe-button" onClick={handleSubmit}>Save to Saved Recipes</Button>
+                <Button id="add-ingredient-button" onClick={handleSubmit}>Save to Saved Recipes</Button>
                 }
                 </Card.Content>
             </Card>
@@ -95,6 +101,11 @@ export default function SingleSearchRecipe(props){
              name="recipeId"
              onChange={handleInputChange}
              value={recipeId}
+            />
+            <Form.Field
+             name="ingredients"
+             onChange={handleInputChange}
+             value={ingredients}
             />
             </Form.Group>
             </Fade>

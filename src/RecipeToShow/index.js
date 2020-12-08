@@ -40,7 +40,7 @@ export default function RecipeToShow(props){
                    {props.showSingleRecipe.instructions}
                     
                 </Card.Description>
-                <Button onClick={() => props.closeSingleRecipe()}>Back To All Shared Recipes</Button>
+                <Button id="back-button" onClick={() => props.closeSingleRecipe()}>Back To All Shared Recipes</Button>
             </Card.Content>
             </Card>
             </Fade>

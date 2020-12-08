@@ -26,10 +26,11 @@ export default class SearchContainer extends Component {
             savedRecipes: [],
             savedIngredients: [],
             searchIngredients: '',
-            conditionalView: 'single recipe view',
-            idOfSearchedRecipeToShow: 156992,
+            conditionalView: '',
+            idOfSearchedRecipeToShow: -1,
             currentUser: props.currentUser,
-            loggedIn: props.loggedIn
+            loggedIn: props.loggedIn,
+            searchContainerConditionalView: props.searchContainerConditionalView
         }
     }
     handleInputChange = (event) => {
@@ -205,6 +206,9 @@ export default class SearchContainer extends Component {
                 conditionalView: 'show saved recipes'
             })
         }
+    componentDidMount(){
+        this.getSavedRecipes()
+    }
     render(){
         return(
             <React.Fragment>
@@ -254,7 +258,8 @@ export default class SearchContainer extends Component {
                 />
             }
             {
-                this.state.conditionalView === "show saved recipes"
+
+                this.state.conditionalView === 'show saved recipes'
                 &&
                 <SavedSearchedRecipes
                 savedRecipes={this.state.savedRecipes}/>

@@ -8,7 +8,7 @@ export default function LandingPage(props){
         <React.Fragment>
         <Container textAlign="center" className="landing-page-container">
             <Fade top>
-            <h1>Welcome to the Pandemic kitchen</h1>
+            <h1 id="landing-page-title">Welcome to the Pandemic Pantry</h1>
             </Fade>
             <Fade bottom>
             <p id="landing-paragraph">Many of us have found comfort in these troubling times in our food.  This site was created to showcase the recipes we have created with often little ingredients on hand.</p>

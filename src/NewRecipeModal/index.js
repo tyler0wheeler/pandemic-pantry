@@ -32,7 +32,7 @@ export default function NewRecipeModal(props) {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Create Recipe</Button>}
+      trigger={<Button id="create-recipe-button">Create Recipe</Button>}
     >
       <Modal.Header className="modal-header">Create A New Recipe for your Cookbook. Don't Worry, You'll Add Your Ingredients Next!</Modal.Header>
     <Form>

@@ -26,7 +26,7 @@ export default function RecipeToShowUser(props){
                 <Button
                 
                 icon='x'
-                
+                id="delete-ingredient"
                 size='mini'
                 onClick={() => props.deleteSingleIngredient(ingredient.id)}
                 />
@@ -56,7 +56,7 @@ export default function RecipeToShowUser(props){
                 placeholder="Add Ingredient"
                 onChange={handleInputChange}
                 value={ingredient}
-                ></Form.Input><Button onClick={() => handleSubmit({ingredient}, props.showSingleUserRecipe.id)}>Add Ingredient</Button>
+                ></Form.Input><Button id="add-ingredient-button" onClick={() => handleSubmit({ingredient}, props.showSingleUserRecipe.id)}>Add Ingredient</Button>
                 
                 <List>
                 {ingredients}
@@ -78,7 +78,7 @@ export default function RecipeToShowUser(props){
                 onClick={() => props.editMyRecipe(props.showSingleUserRecipe.id)}>Edit</Button>
                 </Card.Content>
                 <Card.Content>
-                <Button onClick={() => props.closeSingleUserRecipe()}>Back To All My Recipes</Button>
+                <Button id="back-button" onClick={() => props.closeSingleUserRecipe()}>Back To All My Recipes</Button>
                 </Card.Content>
             </Card.Content>
             </Card>

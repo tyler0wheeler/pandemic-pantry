@@ -16,18 +16,13 @@ export default function SavedSearchedRecipes(props){
     // const handleSubmit = (eachEntry, id) => {
     //     props.addIngredient(eachEntry, id)
     //     setEachEntry(initialInputState)
-    // } 
-   
+    // }
+    // const index = props.savedRecipes.ingredients.charAt(0)
+    // console.log(index); 
+    console.log("these are the ingredients",props.savedRecipes.title);
+    console.log("These are the props", props);
     const allRecipes = props.savedRecipes.map(recipe => {
-    // const ingredients = props.savedIngredients.map(ingredient=> { 
-    //     if (ingredient.recipe.id === recipe.id){
-    //         return(
-    //             <List.Item id="list-item" key={ingredient.id}>{ingredient.ingredient}</List.Item>
-    //         )
-    //     } else {
-    //         return null
-    //     }
-    // })
+    console.log(recipe.ingredients);
     return(
         <Card  raised key={recipe.id} id="item-recipe">
             <Image 
@@ -44,7 +39,8 @@ export default function SavedSearchedRecipes(props){
                 </Card.Meta>
                 <List>
                 <h5 id="list-item">Ingredients</h5>
-                {/*ingredients*/}
+                {recipe.ingredients}
+
                 </List>
                 <h5 id="list-item">Instructions</h5>
                 <Card.Description>
