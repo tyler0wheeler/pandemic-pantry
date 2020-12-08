@@ -83,11 +83,11 @@ export default class CookbookContainer extends Component{
             try {
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/recipes/" + id
                 const ingredientUrl = process.env.REACT_APP_API_URL + "/pandemic-pantry/recipes/delete-all-ingredients/" + id
-                const deleteMyRecipeResponse = await fetch(url, {
+                const deleteIngredientsWithRecipe = await fetch(ingredientUrl, {
                     credentials: 'include',
                     method: "DELETE"
                 })
-                const deleteIngredientsWithRecipe = await fetch(ingredientUrl, {
+                const deleteMyRecipeResponse = await fetch(url, {
                     credentials: 'include',
                     method: "DELETE"
                 })
