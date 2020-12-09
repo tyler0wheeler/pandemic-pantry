@@ -73,6 +73,7 @@ export default class SearchContainer extends Component {
             }catch(err){
             console.log("Error getting single recipe by id", err);
             }
+            console.log("this is the single recipe searched", this.state.singleRecipe);
         }
         getSavedRecipes = async () =>{
             try{
@@ -91,6 +92,7 @@ export default class SearchContainer extends Component {
         }
         saveRecipe = async (recipeToAdd) =>{
             try{
+                console.log(recipeToAdd);
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/"
                 const savedRecipeResponse = await fetch(url,{
                     credentials: 'include',

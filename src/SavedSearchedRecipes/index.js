@@ -19,11 +19,13 @@ export default function SavedSearchedRecipes(props){
     // }
     // const index = props.savedRecipes.ingredients.charAt(0)
     // console.log(index); 
-    console.log("these are the ingredients",props.savedRecipes.title);
+    
     console.log("These are the props", props);
     const allRecipes = props.savedRecipes.map(recipe => {
-    const removeCharacter = (recipe.ingredients).slice(0 ,-1);
-    const sliceFirst = removeCharacter.slice(1)
+    // console.log(recipe.ingredients);
+    // const turnToString = recipe.ingredients.toString()
+    // const removeCharacter = (turnToString).slice(0 ,-1);
+    // const sliceFirst = removeCharacter.slice(1)
     // const newArr = sliceFirst.toString().split(',')
     // console.log(newArr);
     // const ingredients = newArr.map(ingredient=> {
@@ -52,7 +54,7 @@ export default function SavedSearchedRecipes(props){
                 </Card.Meta>
                 <List>
                 <h5 id="list-item">Ingredients</h5>
-                <List.Item id="list-item">{sliceFirst}</List.Item>
+                <List.Item id="list-item">{recipe.ingredients}</List.Item>
 
                 </List>
                 <h5 id="list-item">Instructions</h5>

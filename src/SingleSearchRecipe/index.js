@@ -15,7 +15,7 @@ export default function SingleSearchRecipe(props){
         servings: props.showThisRecipe.servings,
         instructions: props.showThisRecipe.instructions,
         recipeId: props.showThisRecipe.id,
-        ingredients: ingredientToAdd
+        ingredients: ingredientToAdd.toString()
     }
     const [eachEntry, setEachEntry] = useState(initialInputState)
     const { title, image, servings, readyInMinutes, instructions, recipeId, ingredients} = eachEntry
