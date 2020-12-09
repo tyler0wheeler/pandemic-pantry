@@ -1,31 +1,25 @@
 
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 import Fade from 'react-reveal/Fade';
 
 
 
 export default function SearchRecipeList(props){
     const allSearchedRecipes = props.searchedRecipes.map(recipe => {
-    // console.log(allPosts);
-    // const likes = props.likes.filter(like => like.post.id === post.id)
-    // console.log(likes);
-    // console.log(props.loggedInUser);
-    // const likedUser = props.likes.filter(like => like.user.username === props.loggedInUser )
-    // const likedUser = likes.filter(like => like.user.username === props.loggedInUser);
-    // console.log(likedUser);
-    
+
     return(
-        <Card raised key={recipe.id} onClick={() => {} } medium circular>
+        <Card raised={true} key={recipe.id} onClick={() => {} } id="item-recipe">
             <Card.Content textAlign={"center"}>
-                <Card.Header>
+                <Card.Header id="card-header">
                     {recipe.title}
                 </Card.Header>
-                <Card.Description>
-                   Searched ingredients include: {recipe.usedIngredientCount}
-
+                <Card.Meta>
+                Searched ingredients include: {recipe.usedIngredientCount}
+                </Card.Meta>
+                <Card.Meta>
                    Other ingredients needed: {recipe.missedIngredientCount} 
-                </Card.Description>
+                   </Card.Meta>
                 <Image raised true
                     src={recipe.image} onClick={ () => props.showSingleRecipe(recipe.id)}/>
             </Card.Content>
@@ -36,6 +30,7 @@ export default function SearchRecipeList(props){
     return(
         <Fade right>
         <h1>Search Results</h1>
+        <Button id="back-button-saved-recipe" onClick={() => props.backToSearch()}>Back To Search</Button>
         <Card.Group centered={true}>
             {allSearchedRecipes}
         </Card.Group>

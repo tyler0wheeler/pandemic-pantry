@@ -6,18 +6,7 @@ import {Card,Image, List, } from 'semantic-ui-react'
 
 
 export default function ShowAllUserRecipes(props){
-    // const initialInputState = { ingredient: '' }
-    // const [eachEntry, setEachEntry] = useState(initialInputState)
-    // const { ingredient } = eachEntry
-  
-    // const handleInputChange = e => {
-    // setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
-    // }
-    // const handleSubmit = (eachEntry, id) => {
-    //     props.addIngredient(eachEntry, id)
-    //     setEachEntry(initialInputState)
-    // } 
-   
+ 
     const allRecipes = props.userRecipes.map(recipe => {
     const ingredients = props.ingredients.map(ingredient=> { 
         if (ingredient.recipe.id === recipe.id){

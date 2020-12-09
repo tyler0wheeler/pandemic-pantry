@@ -263,3 +263,7 @@
 #show-saved-recipes:hover{
   background-color: rgb(75, 75, 71) !important;
 }
+#saved-recipe-button-content{
+  height: 6% !important;
+  flex-grow: inherit !important;
+}

@@ -24,21 +24,24 @@ export default function SavedSearchedRecipes(props){
     const allRecipes = props.savedRecipes.map(recipe => {
     const removeCharacter = (recipe.ingredients).slice(0 ,-1);
     const sliceFirst = removeCharacter.slice(1)
-    const newArr = sliceFirst.toString().split(', ')
-    console.log(newArr);
-    const ingredients = newArr.map(ingredient=> {
-        const firstCharacter = ingredient.slice(0, -1)
-        const lastCharacter = firstCharacter.slice(1)
-        return(
-            <List.Item id="list-item">{lastCharacter}</List.Item>
-        )
-    })    
+    // const newArr = sliceFirst.toString().split(',')
+    // console.log(newArr);
+    // const ingredients = newArr.map(ingredient=> {
+    //     const firstCharacter = ingredient.slice(0, -1)
+    //     const lastCharacter = firstCharacter.slice(1)
+    //     return(
+    //         <List.Item id="list-item">{lastCharacter}</List.Item>
+    //     )
+    // })    
     return(
         <Card  raised key={recipe.id} id="item-recipe">
+            <Card.Content id="saved-recipe-button-content">
+                <Button className="delete-modal-open-button" onClick={() => props.deleteSavedRecipe(recipe.id)}>Delete Recipe</Button>
+            </Card.Content>
             <Image 
                      src={recipe.image} alt="food pic"/>
             <Card.Content textAlign={"center"}>
-                <Card.Header>
+                <Card.Header id="card-header">
                     {recipe.title}
                 </Card.Header>
                 <Card.Meta>
@@ -49,7 +52,7 @@ export default function SavedSearchedRecipes(props){
                 </Card.Meta>
                 <List>
                 <h5 id="list-item">Ingredients</h5>
-                {ingredients}
+                <List.Item id="list-item">{sliceFirst}</List.Item>
 
                 </List>
                 <h5 id="list-item">Instructions</h5>
@@ -58,9 +61,7 @@ export default function SavedSearchedRecipes(props){
                     
                 </Card.Description>
             </Card.Content> 
-            <Card.Content>
-                <Button className="delete-modal-open-button" onClick={() => props.deleteSavedRecipe(recipe.id)}>Delete Recipe</Button>
-            </Card.Content>                   
+                              
             </Card>
             
         )

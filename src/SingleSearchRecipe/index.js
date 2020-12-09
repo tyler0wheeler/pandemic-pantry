@@ -24,11 +24,6 @@ export default function SingleSearchRecipe(props){
         setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
         console.log(ingredients);
       }
-    // const ingredientToAdd = props.showThisRecipe.extendedIngredients.map(ingredient =>{
-    //     return(
-    //         ingredient.originalString
-    //     )
-    // }) 
       
     const ingredientsMap = props.showThisRecipe.extendedIngredients.map(ingredient =>{
             return (
@@ -37,8 +32,7 @@ export default function SingleSearchRecipe(props){
     })
     const handleSubmit = e =>{
         props.saveRecipe(eachEntry)
-        console.log(ingredientToAdd);
-        // props.addIngredient(ingredientToAdd, props.showThisRecipe.id)
+
     }
     return(
         <React.Fragment>
