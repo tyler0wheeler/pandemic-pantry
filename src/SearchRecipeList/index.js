@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
-
+import Fade from 'react-reveal/Fade';
 
 
 
@@ -34,9 +34,12 @@ export default function SearchRecipeList(props){
         )
     })
     return(
+        <Fade right>
+        <h1>Search Results</h1>
         <Card.Group centered={true}>
             {allSearchedRecipes}
         </Card.Group>
+        </Fade>
     )
 
 }

@@ -10,9 +10,6 @@ body {
   background-color: rgb(191 190 129) !important;
   /* background-image: url("https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500") !important; */
   background-size: cover !important;
-  image-rendering: auto !important;
-  image-rendering: crisp-edges !important;
-  image-rendering: pixelated !important;
   -webkit-background-size: cover !important;
   -moz-background-size: cover !important; 
   -o-background-size: cover !important;

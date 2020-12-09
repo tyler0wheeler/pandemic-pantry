@@ -29,7 +29,7 @@ export default function NavigationBar(props){
           basic
           compact
           onClick ={() => props.showAllRecipes()}
-          compact >Shared Recipes</Button> 
+          compact >Shared CookBook</Button> 
           </Menu.Item>
           <Menu.Item>
           <Button

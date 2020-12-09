@@ -82,6 +82,7 @@
   border-radius: 5% !important;
   margin-left: auto;
   margin-right: auto;
+  
 }
 #edit-new-button{
   background: olive !important;
@@ -244,4 +245,21 @@
 }
 #card-header{
   font-family: 'Libre Baskerville', serif !important;
+}
+#back-button-saved-recipe{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: rgb(62, 62, 57) !important;
+  color: white !important;
+  margin-bottom: 2% !important;
+}
+#back-button-saved-recipe:hover{
+  background-color: rgb(75, 75, 71) !important;
+}
+#show-saved-recipes{
+  font-family: 'Libre Baskerville', serif !important;
+  background-color: rgb(62, 62, 57) !important;
+  color: white !important
+}
+#show-saved-recipes:hover{
+  background-color: rgb(75, 75, 71) !important;
 }

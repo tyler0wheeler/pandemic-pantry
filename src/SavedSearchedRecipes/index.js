@@ -1,6 +1,6 @@
 import React from 'react'
 import Fade from 'react-reveal/Fade';
-import {Card,Image, List, } from 'semantic-ui-react'
+import {Card, Image, List, Button } from 'semantic-ui-react'
 
 
 
@@ -57,7 +57,10 @@ export default function SavedSearchedRecipes(props){
                    {recipe.instructions}
                     
                 </Card.Description>
-            </Card.Content>                    
+            </Card.Content> 
+            <Card.Content>
+                <Button className="delete-modal-open-button" onClick={() => props.deleteSavedRecipe(recipe.id)}>Delete Recipe</Button>
+            </Card.Content>                   
             </Card>
             
         )
@@ -65,6 +68,7 @@ export default function SavedSearchedRecipes(props){
     return(
         <Fade left>
             <h1>My Saved Recipes</h1>
+            <Button id="back-button-saved-recipe" onClick={() => props.backToSearch()}>Back to Search</Button>
         <Card.Group centered={true}>
             {allRecipes}
         </Card.Group>

@@ -26,7 +26,7 @@ export default class SearchContainer extends Component {
             savedRecipes: [],
             savedIngredients: [],
             searchIngredients: '',
-            conditionalView: '',
+            conditionalView: 'search bar',
             idOfSearchedRecipeToShow: -1,
             currentUser: props.currentUser,
             loggedIn: props.loggedIn,
@@ -61,7 +61,8 @@ export default class SearchContainer extends Component {
         const responseJson = await response.json()
         console.log(responseJson);
         this.setState({
-            searchedRecipes: responseJson
+            searchedRecipes: responseJson,
+            conditionalView: 'show search results'
         }) 
         }catch(err){
             console.log("Error getting recipes in search", err);
@@ -101,7 +102,7 @@ export default class SearchContainer extends Component {
         } catch (err){
             console.log("Error getting Saved Recipes data", err)
         }
-        console.log(this.state.savedIngredients);
+       
         console.log(this.state.savedRecipes);
     }
         saveRecipe = async (recipeToAdd) =>{
@@ -129,46 +130,46 @@ export default class SearchContainer extends Component {
         this.getSavedRecipes()
         console.log(this.state.savedRecipes);
     }
-        addIngredient = async (ingredientAdded, id) => {
-            try {
-                const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/searchedingredient/" + id
-                const addIngredientResponse = await fetch(url, {
-                    credentials: 'include',
-                    method: "POST",
-                    body: JSON.stringify(ingredientAdded),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                const addIngredientJson = await addIngredientResponse.json()
-                console.log("This is addIngredientJson", addIngredientJson);
-                if(addIngredientResponse.status === 200){
-                    this.setState({
-                        savedIngredients: [...this.state.savedIngredients, addIngredientJson.data]
-                    })
-                }
-            } catch(err){
-                console.log("Error adding ingredient", err);
-            }
-            this.getSavedRecipes()
-        }
+        // addIngredient = async (ingredientAdded, id) => {
+        //     try {
+        //         const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/searchedingredient/" + id
+        //         const addIngredientResponse = await fetch(url, {
+        //             credentials: 'include',
+        //             method: "POST",
+        //             body: JSON.stringify(ingredientAdded),
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         })
+        //         const addIngredientJson = await addIngredientResponse.json()
+        //         console.log("This is addIngredientJson", addIngredientJson);
+        //         if(addIngredientResponse.status === 200){
+        //             this.setState({
+        //                 savedIngredients: [...this.state.savedIngredients, addIngredientJson.data]
+        //             })
+        //         }
+        //     } catch(err){
+        //         console.log("Error adding ingredient", err);
+        //     }
+        //     this.getSavedRecipes()
+        // }
         deleteSavedRecipe = async (id, func) => {
             try {
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/" + id
-                const ingredientUrl = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/delete-all-ingredients/" + id
+                // const ingredientUrl = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/delete-all-ingredients/" + id
                 const deleteSavedRecipeResponse = await fetch(url, {
                     credentials: 'include',
                     method: "DELETE"
                 })
-                const deleteSavedIngredientsWithRecipe = await fetch(ingredientUrl, {
-                    credentials: 'include',
-                    method: "DELETE"
-                })
+                // const deleteSavedIngredientsWithRecipe = await fetch(ingredientUrl, {
+                //     credentials: 'include',
+                //     method: "DELETE"
+                // })
                 const deleteSavedRecipeJson = await deleteSavedRecipeResponse.json()
-                const deleteSavedIngredientsJson = await deleteSavedIngredientsWithRecipe.json()
+                // const deleteSavedIngredientsJson = await deleteSavedIngredientsWithRecipe.json()
                 console.log("I want to delete this recipe: ", deleteSavedRecipeJson)
-                console.log("I want to delete these ingredients: ", deleteSavedIngredientsJson)
-                if(deleteSavedRecipeJson.status && deleteSavedIngredientsJson.status === 200) {
+                // console.log("I want to delete these ingredients: ", deleteSavedIngredientsJson)
+                if(deleteSavedRecipeJson.status) {
                     
                     this.setState({
                         conditionalView: 'show saved recipes',
@@ -177,7 +178,7 @@ export default class SearchContainer extends Component {
                         })
                     this.setState({
                         savedRecipes: this.state.savedRecipes.filter(recipe => recipe.id !== id),
-                        savedIngredients: this.state.savedIngredients.filter(ingredient => ingredient.recipe.id !== id)
+                        // savedIngredients: this.state.savedIngredients.filter(ingredient => ingredient.recipe.id !== id)
                     })
                                 
                 }
@@ -202,10 +203,15 @@ export default class SearchContainer extends Component {
         })
     }
         showSavedSearchRecipes = () =>{
-            this.setState({
+          this.setState({
                 conditionalView: 'show saved recipes'
             })
             this.getSavedRecipes()
+        }
+        backToSearch = () => {
+            this.setState({
+                conditionalView: 'search bar'
+            })
         }
     // componentDidMount(){
     //     this.getSavedRecipes()
@@ -213,6 +219,9 @@ export default class SearchContainer extends Component {
     render(){
         return(
             <React.Fragment>
+                {
+                this.state.conditionalView === 'search bar'
+                &&
             <Fade bottom>
                 <h1>Search Spoonacular</h1>
             <Form className="search-bar">
@@ -237,17 +246,18 @@ export default class SearchContainer extends Component {
                 {
                     this.state.loggedIn === true
                     &&
-                <Button onClick={this.showSavedSearchRecipes()}>Saved Searched Recipes</Button>
+                <Button id="show-saved-recipes" onClick={this.showSavedSearchRecipes}>Saved Searched Recipes</Button>
                 }
             {/*<input name="word" type="search" value={this.state.searchIngredients} onChange={this.handleInputChange}/>
             <input type="button" value="Search" onClick={this.search} />*/}
+            
             <SearchRecipeList
             searchedRecipes={this.state.searchedRecipes}
             showSingleRecipe={this.showSingleRecipe}
             />
             </Form>
             </Fade>
-            
+            }
             {
                 this.state.idOfSearchedRecipeToShow !== -1 && this.state.conditionalView === "single recipe view"
                 &&
@@ -263,6 +273,8 @@ export default class SearchContainer extends Component {
                 this.state.conditionalView === 'show saved recipes'
                 &&            
                 <SavedSearchedRecipes
+                deleteSavedRecipe={this.deleteSavedRecipe}
+                backToSearch={this.backToSearch}
                 savedRecipes={this.state.savedRecipes}/>
             }    
         </React.Fragment>
