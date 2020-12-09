@@ -36,9 +36,8 @@ export default function SavedSearchedRecipes(props){
     //     )
     // })    
     return(
-        <Card  raised key={recipe.id} id="item-recipe">
+        <Card  raised key={recipe.id} id="item-recipe" onClick={() => props.showSingleRecipe(recipe.id)}>
             <Card.Content id="saved-recipe-button-content">
-                <Button className="delete-modal-open-button" onClick={() => props.deleteSavedRecipe(recipe.id)}>Delete Recipe</Button>
             </Card.Content>
             <Image 
                      src={recipe.image} alt="food pic"/>

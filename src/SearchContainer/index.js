@@ -4,6 +4,7 @@ import { Form, Button} from 'semantic-ui-react'
 import SearchRecipeList from '../SearchRecipeList'
 import SingleSearchRecipe from '../SingleSearchRecipe'
 import SavedSearchedRecipes from '../SavedSearchedRecipes'
+import RecipeToShowSavedRecipe from '../RecipeToShowSavedRecipe'
 
 export default class SearchContainer extends Component {
     constructor(props){
@@ -16,7 +17,8 @@ export default class SearchContainer extends Component {
             conditionalView: 'search bar',
             idOfSearchedRecipeToShow: -1,
             currentUser: props.currentUser,
-            loggedIn: props.loggedIn
+            loggedIn: props.loggedIn,
+            idOfRecipeToShow: -1
         }
     }
     handleInputChange = (event) => {
@@ -147,6 +149,13 @@ export default class SearchContainer extends Component {
                 conditionalView: 'single recipe view'
             })
         }
+        showSingleRecipe = (id) => {
+            console.log("you are trying to show recipe with id: ", id)
+            this.setState({
+                idOfRecipeToShow: id,
+                conditionalView: 'show this saved recipe'
+                })    
+        }
         closeShowModal = () => {
             this.setState({
                 idOfSearchedRecipeToShow: -1,
@@ -162,6 +171,19 @@ export default class SearchContainer extends Component {
         backToSearch = () => {
             this.setState({
                 conditionalView: 'search bar'
+            })
+        }
+        closeSingleRecipe = () => {
+            this.setState({
+                conditionalView: 'show saved recipes',
+                idOfRecipeToShow: -1
+            })
+            // this.getSavedRecipes()
+        }
+        closeSearchedRecipes = () => {
+            this.setState({
+                idOfSearchedRecipeToShow: -1,
+                conditionalView: 'show saved results'
             })
         }
     // componentDidMount(){
@@ -226,8 +248,20 @@ export default class SearchContainer extends Component {
                 &&            
                 <SavedSearchedRecipes
                 deleteSavedRecipe={this.deleteSavedRecipe}
+                closeSingleRecipe={this.closeSearchedRecipes}
+                savedRecipes={this.state.savedRecipes}
+                showSingleRecipe={this.showSingleRecipe}
                 backToSearch={this.backToSearch}
-                savedRecipes={this.state.savedRecipes}/>
+                />
+            }
+            {
+                this.state.conditionalView === "show this saved recipe" && this.state.idOfRecipeToShow !==-1
+                &&
+                <RecipeToShowSavedRecipe
+                showSingleRecipe={this.state.savedRecipes.find((recipe) => recipe.id === this.state.idOfRecipeToShow)}
+                closeSingleRecipe={this.closeSingleRecipe}
+                deleteSavedRecipe={this.deleteSavedRecipe}
+                />
             }    
         </React.Fragment>
         )
