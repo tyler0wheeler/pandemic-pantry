@@ -8,11 +8,11 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* @media (prefers-reduced-motion: no-preference) {
+  .landing-page-image {
+    animation: rotation infinite 20s linear !important;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -75,15 +75,17 @@
 .modal-actions{
   background: rgb(247, 247, 198) !important;
 }
-#landing-page-image{
+.landing-page-image{
   width: 25%;
   height: auto;
   transform: rotate(90deg) !important;
-  border-radius: 5% !important;
+  border-radius: 6% !important;
+  overflow: hidden ;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
   
 }
+
 #edit-new-button{
   background: olive !important;
 }

@@ -15,7 +15,7 @@ export default function LandingPage(props){
             <p id="landing-paragraph">Many of us have found comfort in these troubling times in our food.  This site was created to showcase the recipes we have created with often little ingredients on hand.</p>
             </Fade>
             <Zoom>
-            <Image id="landing-page-image" src="https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></Image>
+            <Image className="landing-page-image" src="https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></Image>
             </Zoom>
             <Fade right>
             <p id="landing-paragraph">Use our Search to find recipes based on the ingredients you have from our friends at Spoonacular or register an account and create your own recipes for yourself or to share with our community!  We can't wait to see what you have been cooking up! </p>
