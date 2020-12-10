@@ -10,14 +10,14 @@ export default function NewRecipeModal(props) {
   const handleInputChange = e => {
   setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
   // when the box is checked, shared should be true
-  console.log(shared);
+  // console.log(shared);
 }
   const boxChecked = (e) =>{
     setEachEntry(({ shared, ...prevState }) => 
       ({ ...prevState, shared: !shared})
     )
-    console.log(eachEntry);
-    console.log(shared);
+    // console.log(eachEntry);
+    // console.log(shared);
   }
 
   const handleSubmit = e => {

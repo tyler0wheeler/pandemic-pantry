@@ -36,7 +36,7 @@ export default class SearchContainer extends Component {
       }
         getSearchedRecipes = async () => {
             try{
-            const response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${this.state.searchIngredients}&number=1&ranking=1&ignorePantry=true`, {
+            const response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${this.state.searchIngredients}&number=10&ranking=1&ignorePantry=true`, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY,
@@ -54,7 +54,7 @@ export default class SearchContainer extends Component {
             }catch(err){
                 console.log("Error getting recipes in search", err);
             }
-            }
+        }
         getSingleSearchedRecipe = async (id) => {
             try{
             const response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`, {
@@ -66,7 +66,7 @@ export default class SearchContainer extends Component {
                 }
             })
             const responseJson = await response.json()
-            console.log(responseJson);
+            // console.log(responseJson);
             this.setState({
                 singleRecipe: responseJson,
                 idOfSearchedRecipeToShow: id,
@@ -94,7 +94,7 @@ export default class SearchContainer extends Component {
         }
         saveRecipe = async (recipeToAdd) =>{
             try{
-                console.log(recipeToAdd);
+                // console.log(recipeToAdd);
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/searched-recipes/"
                 const savedRecipeResponse = await fetch(url,{
                     credentials: 'include',
@@ -142,7 +142,7 @@ export default class SearchContainer extends Component {
             this.getSavedRecipes()
         }
         showSingleSearchedRecipe = (id) => {
-            console.log("you are trying to show recipe with id: ", id)
+            // console.log("you are trying to show recipe with id: ", id)
             this.getSingleSearchedRecipe(id)
             this.setState({
                 idOfSearchedRecipeToShow: id,
@@ -150,7 +150,7 @@ export default class SearchContainer extends Component {
             })
         }
         showSingleRecipe = (id) => {
-            console.log("you are trying to show recipe with id: ", id)
+            // console.log("you are trying to show recipe with id: ", id)
             this.setState({
                 idOfRecipeToShow: id,
                 conditionalView: 'show this saved recipe'
@@ -247,8 +247,6 @@ export default class SearchContainer extends Component {
                 this.state.conditionalView === 'show saved recipes'
                 &&            
                 <SavedSearchedRecipes
-                deleteSavedRecipe={this.deleteSavedRecipe}
-                closeSingleRecipe={this.closeSearchedRecipes}
                 savedRecipes={this.state.savedRecipes}
                 showSingleRecipe={this.showSingleRecipe}
                 backToSearch={this.backToSearch}

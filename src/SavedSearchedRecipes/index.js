@@ -6,21 +6,8 @@ import {Card, Image, List, Button } from 'semantic-ui-react'
 
 
 export default function SavedSearchedRecipes(props){
-    // const initialInputState = { ingredient: '' }
-    // const [eachEntry, setEachEntry] = useState(initialInputState)
-    // const { ingredient } = eachEntry
-  
-    // const handleInputChange = e => {
-    // setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
-    // }
-    // const handleSubmit = (eachEntry, id) => {
-    //     props.addIngredient(eachEntry, id)
-    //     setEachEntry(initialInputState)
-    // }
-    // const index = props.savedRecipes.ingredients.charAt(0)
-    // console.log(index); 
-    
-    console.log("These are the props", props);
+     
+    // console.log("These are the props", props);
     const allRecipes = props.savedRecipes.map(recipe => {
     // console.log(recipe.ingredients);
     // const turnToString = recipe.ingredients.toString()

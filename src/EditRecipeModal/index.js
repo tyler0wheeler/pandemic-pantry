@@ -13,9 +13,6 @@ export default function EditRecipeModal(props) {
             shared: props.recipeToEdit.shared
         }
 
-        
-
-
         const [eachEntry, setEachEntry] = useState(initialInputState)
         const { title, image, readyInMinutes, servings, instructions, shared} = eachEntry
 
@@ -26,8 +23,8 @@ export default function EditRecipeModal(props) {
         setEachEntry(({ shared, ...prevState }) => 
           ({ ...prevState, shared: !shared})
         )
-        console.log(eachEntry);
-        console.log(shared);
+        // console.log(eachEntry);
+        // console.log(shared);
       }
 
     const handleSubmit = e => {

@@ -17,7 +17,7 @@ export default function RecipeToShowUser(props){
         props.addIngredient(eachEntry, id)
         setEachEntry(initialInputState)
     } 
-    console.log(props);
+    // console.log(props);
     const ingredients = props.ingredients.map(ingredient=> { 
         if (ingredient.recipe.id === props.showSingleUserRecipe.id){
             return(

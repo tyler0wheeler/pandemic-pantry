@@ -34,7 +34,7 @@ export default class CookbookContainer extends Component{
                     allRecipes: recipesJson.data.recipes,
                     ingredients: recipesJson.data.ingredients
                 })
-                console.log(recipesJson)
+                // console.log(recipesJson)
             }catch(err){
                 console.log("Error getting posts data", err)
 
@@ -54,7 +54,7 @@ export default class CookbookContainer extends Component{
             } catch (err){
                 console.log("Error getting User Recipes data", err)
             }
-            console.log(this.state.ingredients);
+            // console.log(this.state.ingredients);
         }
         createUserRecipe = async (recipeToAdd) =>{
             try{
@@ -68,7 +68,7 @@ export default class CookbookContainer extends Component{
                     body: JSON.stringify(recipeToAdd)
                 })
                 const createdRecipeJson = await createdRecipeResponse.json()
-                console.log("This is the recipe being created", createdRecipeJson);
+                // console.log("This is the recipe being created", createdRecipeJson);
                 if(createdRecipeResponse.status === 200){
                     this.setState({
                         userRecipes: [...this.state.userRecipes, createdRecipeJson.data],
@@ -94,8 +94,8 @@ export default class CookbookContainer extends Component{
                 })
                 const deleteMyRecipeJson = await deleteMyRecipeResponse.json()
                 const deleteIngredientsJson = await deleteIngredientsWithRecipe.json()
-                console.log("I want to delete this recipe: ", deleteMyRecipeJson)
-                console.log("I want to delete these ingredients: ", deleteIngredientsJson)
+                // console.log("I want to delete this recipe: ", deleteMyRecipeJson)
+                // console.log("I want to delete these ingredients: ", deleteIngredientsJson)
                 if(deleteMyRecipeJson.status && deleteIngredientsJson.status === 200) {
                     
                     this.setState({
@@ -113,8 +113,7 @@ export default class CookbookContainer extends Component{
             } catch(err) {
                 console.log("There was an error deleting the recipe", id)
             }
-            console.log(this.state.conditionalView);
-            
+            // console.log(this.state.conditionalView)           
             this.getUserRecipes()
         }
 
@@ -131,7 +130,7 @@ export default class CookbookContainer extends Component{
                     }
                 })
                 const updateRecipeJson = await updateRecipeResponse.json()
-                console.log(updateRecipeJson)
+                // console.log(updateRecipeJson)
                 this.setState({
                     idOfRecipeToEdit: -1,
                     conditionalView: 'show user recipes'
@@ -155,7 +154,7 @@ export default class CookbookContainer extends Component{
                     }
                 })
                 const addIngredientJson = await addIngredientResponse.json()
-                console.log("This is addIngredientJson", addIngredientJson);
+                // console.log("This is addIngredientJson", addIngredientJson);
                 if(addIngredientResponse.status === 200){
                     this.setState({
                         ingredients: [...this.state.ingredients, addIngredientJson.data]
@@ -174,7 +173,7 @@ export default class CookbookContainer extends Component{
                     method: "DELETE"
                 })
                 const deleteIngredientJson = await deleteIngredientResponse.json()
-                console.log("I want to delete this recipe: ", deleteIngredientJson)
+                // console.log("I want to delete this recipe: ", deleteIngredientJson)
                 if(deleteIngredientResponse.status === 200)
                 this.setState({
                     ingredients: this.state.ingredients.filter(ingredient => ingredient.id !== id)
@@ -200,9 +199,9 @@ export default class CookbookContainer extends Component{
                   'Content-Type': 'application/json'
                 }
               })
-              console.log("loginResponse", loginResponse);
+            //   console.log("loginResponse", loginResponse);
               const loginJson = await loginResponse.json()
-              console.log("loginJson", loginJson);
+            //   console.log("loginJson", loginJson);
           
               if(loginResponse.status === 200 || loginResponse.status === 201) {
                   this.setState({
@@ -210,7 +209,7 @@ export default class CookbookContainer extends Component{
                     loggedInUser: loginJson.data.username,
                     conditionalView: 'show user recipes'
                   })
-                  console.log(loginJson.data);
+                //   console.log(loginJson.data);
                 //   this.getUserPost()
                 } else {
                     this.setState({
@@ -218,13 +217,12 @@ export default class CookbookContainer extends Component{
                     })
                 }
             } catch(error) {
-              console.error("Error trying to log in")
-              console.error(error)
+            //   console.error("Error trying to log in", error)
             }
             this.getUserRecipes()
           }
           register = async (registerUser) =>{
-            console.log("register() in App.js called with the following info", registerUser);
+            // console.log("register() in App.js called with the following info", registerUser);
             const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/users/register/"
             try {
                 const registerUserResponse = await fetch(url, {
@@ -242,13 +240,13 @@ export default class CookbookContainer extends Component{
                         errorMessage: 'register error'
                     })
                 }
-            console.log(registerUserJson);
+            // console.log(registerUserJson);
             } catch (err){
                 console.log("Error in registering", registerUser);
             }
         }
         logout = async () =>{
-            console.log("Logout has occured for this username");
+            // console.log("Logout has occured for this username");
             try{
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/users/logout/"
                 const logoutResponse = await fetch(url)
@@ -259,7 +257,7 @@ export default class CookbookContainer extends Component{
                     conditionalView: 'landing page'
     
                 })
-                console.log(logoutJson)
+                // console.log(logoutJson)
             }catch(err){
                 console.log("Error getting posts data", err)
     
@@ -281,7 +279,7 @@ export default class CookbookContainer extends Component{
             this.getAllRecipes()
         }
         showSingleRecipe = (id) => {
-            console.log("you are trying to show recipe with id: ", id)
+            // console.log("you are trying to show recipe with id: ", id)
             this.setState({
                 idOfRecipeToShow: id,
                 conditionalView: 'show this recipe'
@@ -289,12 +287,11 @@ export default class CookbookContainer extends Component{
         }
         showUserRecipes = () => {
             this.setState({
-                conditionalView: 'show user recipes',
-                
+                conditionalView: 'show user recipes'  
             })
         }
         showSingleUserRecipe = (id) => {
-            console.log("you are trying to show user recipe with id: ", id)
+            // console.log("you are trying to show user recipe with id: ", id)
             this.setState({
                 idOfRecipeToShow: id,
                 conditionalView: 'show this user recipe'

@@ -6,7 +6,7 @@ import {Card, Button, Image, List } from 'semantic-ui-react'
 
 
 export default function RecipeToShow(props){
-    console.log(props);
+    // console.log(props);
     const ingredients = props.ingredients.map(ingredient=> { 
         if (ingredient.recipe.id === props.showSingleRecipe.id){
             return(
