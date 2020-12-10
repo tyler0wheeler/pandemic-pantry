@@ -13,7 +13,34 @@
     animation: rotation infinite 20s linear !important;
   }
 } */
-
+@keyframes spin1 {
+  0% {
+  -moz-transform:rotate(320deg);
+  -webkit-transform:rotate(320deg);
+  -o-transform:rotate(320deg);
+  -ms-transform:rotate(320deg);
+  }
+  100% {
+  -moz-transform:rotate(680deg);
+  -webkit-transform:rotate(680deg);
+  -o-transform:rotate(680deg);
+  -ms-transform:rotate(680deg); 
+  }
+}
+@-webkit-keyframes spin1 {
+  0% {
+  -moz-transform:rotate(320deg);
+  -webkit-transform:rotate(320deg);
+  -o-transform:rotate(320deg);
+  -ms-transform:rotate(320deg);
+  }
+  100% {
+  -moz-transform:rotate(680deg);
+  -webkit-transform:rotate(680deg);
+  -o-transform:rotate(680deg);
+  -ms-transform:rotate(680deg); 
+  }
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -63,6 +90,8 @@
 #landing-paragraph {
   text-shadow: 1px 1px 4px rgb(247, 247, 198) !important;
   font-size: 22px;
+  padding-top: 2% !important;
+  font-weight: 600 !important;
 }
 .modal-header{
   background: olive !important;
@@ -79,11 +108,15 @@
   width: 25%;
   height: auto;
   transform: rotate(90deg) !important;
-  border-radius: 6% !important;
+  border-radius: 50% !important;
   overflow: hidden ;
   margin-left: auto;
   margin-right: auto; 
-  
+}
+
+.spin{
+  animation: spin1 20s infinite linear !important;
+  padding-bottom: 2% !important;
 }
 
 #edit-new-button{

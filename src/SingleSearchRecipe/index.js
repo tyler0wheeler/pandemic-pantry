@@ -5,7 +5,7 @@ import { Card, Image, Button, List, Form } from 'semantic-ui-react'
 export default function SingleSearchRecipe(props){
     const ingredientToAdd = props.showThisRecipe.extendedIngredients.map(ingredient =>{
         return(
-            ingredient.originalString
+            (' ' + ingredient.originalString)
         )
     })
     const initialInputState = { 
