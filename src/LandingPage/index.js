@@ -12,7 +12,7 @@ export default function LandingPage(props){
             <h1 id="landing-page-title">Welcome to the Pandemic Pantry</h1>
             </Zoom>
             <Fade bottom>
-            <p id="landing-paragraph">Many of us have found comfort in these troubling times in our food.  This site was created to showcase the recipes we have created with often little ingredients on hand.</p>
+            <p id="landing-paragraph">Many of us have found comfort during these troubling times in our food.  The Pandemic Pantry is here to showcase the recipes we have created with often little ingredients on hand.</p>
             </Fade>
             <Zoom>
                 <div className="spin">

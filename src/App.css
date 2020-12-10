@@ -151,7 +151,7 @@
 }
 .landing-page-container{
   text-shadow: 1px 1px 20px rgb(247, 247, 198) !important;
-  font-family: 'Josefin Sans', sans-serif !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
 #landing-page-title{
@@ -301,4 +301,9 @@
 #saved-recipe-button-content{
   height: 6% !important;
   flex-grow: inherit !important;
+}
+#navbar-quote{
+  width: 40% !important;
+  font-size: 15px !important;
+  font-family: 'Libre Baskerville', serif !important;
 }

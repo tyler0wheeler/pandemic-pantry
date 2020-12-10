@@ -68,6 +68,7 @@ export default function NavigationBar(props){
         </React.Fragment>
         :   
         <React.Fragment>
+          <Menu.Item id="navbar-quote">"I Cook With Wine. Sometimes I Even Add It To The Food" - W.C. Fields</Menu.Item>
         <Menu.Menu position="right">
            
         <LoginModal

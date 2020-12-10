@@ -318,7 +318,7 @@ export default class CookbookContainer extends Component{
         }
         closeErrorModals = () => {
             this.setState({
-                conditionalView: 'landing page',
+                // conditionalView: 'landing page',
                 errorMessage: ''
             })
         }

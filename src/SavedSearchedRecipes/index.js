@@ -24,8 +24,6 @@ export default function SavedSearchedRecipes(props){
     // })    
     return(
         <Card  raised key={recipe.id} id="item-recipe" onClick={() => props.showSingleRecipe(recipe.id)}>
-            <Card.Content id="saved-recipe-button-content">
-            </Card.Content>
             <Image 
                      src={recipe.image} alt="food pic"/>
             <Card.Content textAlign={"center"}>
