@@ -1,5 +1,5 @@
 # The Pandemic Pantry
-    ![The Pandemic Pantry](https://the-pandemic-pantry.herokuapp.com/)
+    ![https://the-pandemic-pantry.herokuapp.com/](https://the-pandemic-pantry.herokuapp.com/)
 ## *The Inspiration*
 ------------------------
 Living in a COVID-19 world has it's own unique set of challenges.  All of our lives completely changed over night and now we are forced to live by a new set of guidelines in order to protect ourselves and others.  This new way of life has forced people to spend much of their free time at home.  With restaurants and bars closed or limited in they way they can serve their patrons, may people have found themselves cooking instead of eating out.  I wanted to create an app that allowed users to find inspiration for their cooking and to inspire others.  
