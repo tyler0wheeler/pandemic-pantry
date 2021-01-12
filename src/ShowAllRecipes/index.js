@@ -18,7 +18,7 @@ export default function ShowAllRecipes(props){
         
         <Card color={"yellow"} raised key={recipe.id} onClick={() => {} } id="item-recipe">
             <Image 
-                     src={recipe.image}  onClick={ () => props.showSingleRecipe(recipe.id)} alt="food pic"/>
+                     src={recipe.image} className="show-page-image" onClick={ () => props.showSingleRecipe(recipe.id)} alt="food pic"/>
             <Card.Content textAlign={"center"}>
                 <Card.Header id="card-header">
                     {recipe.title}

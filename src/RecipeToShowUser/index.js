@@ -56,6 +56,7 @@ export default function RecipeToShowUser(props){
                 placeholder="Add Ingredient"
                 onChange={handleInputChange}
                 value={ingredient}
+                id="ingredient-input"
                 ></Form.Input><Button id="add-ingredient-button" onClick={() => handleSubmit({ingredient}, props.showSingleUserRecipe.id)}>Add Ingredient</Button>
                 
                 <List>

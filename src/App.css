@@ -51,6 +51,54 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+@media only screen and (max-width: 667px) {
+  .ui.menu {
+  padding: .5rem !important;
+  width: 100% !important;
+   max-height: 90px;
+  }
+  #shared-recipes,
+  #search-spoonacular,
+  #my-cookbook,
+  #create-recipe-button,
+  #logout-navbar{
+    width: 45px;
+    font-size: 5px;
+    height: 60px;
+    padding: .5rem !important;
+  }
+  #navbar-quote {
+    width: 36% !important;
+    font-size: 6px !important;
+    padding: .5rem !important;
+  }
+  #welcome-user {
+    font-size: 10px !important;
+  }
+  #title-navbar {
+    width: 15%;
+    font-size: 10px !important;
+    padding-left: 1px !important;
+  }
+  .login-register-modal-buttons {
+    width: 35px;
+    height: 60px;
+    margin-top: 8px !important;
+    font-size: .4rem !important;
+    padding: .5rem !important;
+    margin-left: 2px !important;
+  }
+  #ingredient-input {
+    width: 110px !important;
+    font-size: 12px;
+  }
+  #single-view-card {
+    width: 66% !important;
+  }
+  #item-recipe {
+    width: 50% !important;
+  }
+}
 
 #single-view-card {
   width: 35%;
@@ -129,7 +177,7 @@
 }
 #title-navbar{
   font-style: bold !important;
-  font-size: large !important;
+  font-size: large ;
   font-family: 'Libre Baskerville', serif !important;
 }
 
@@ -218,7 +266,7 @@
   background-color: rgb(164, 164, 27) !important;
 }
 #welcome-user{
-  font-size: large !important;
+  font-size: large ;
   font-family: 'Libre Baskerville', serif !important;
 }
 #add-ingredient-button{
@@ -303,7 +351,10 @@
   flex-grow: inherit !important;
 }
 #navbar-quote{
-  width: 40% !important;
-  font-size: 15px !important;
+  width: 40% ;
+  font-size: 15px;
   font-family: 'Libre Baskerville', serif !important;
+}
+.show-page-image{
+  max-height: 52% !important;
 }

@@ -172,7 +172,7 @@ export default class CookbookContainer extends Component{
                     credentials: 'include',
                     method: "DELETE"
                 })
-                const deleteIngredientJson = await deleteIngredientResponse.json()
+                // const deleteIngredientJson = await deleteIngredientResponse.json()
                 // console.log("I want to delete this recipe: ", deleteIngredientJson)
                 if(deleteIngredientResponse.status === 200)
                 this.setState({
@@ -232,7 +232,7 @@ export default class CookbookContainer extends Component{
                     },
                     body: JSON.stringify(registerUser)
                 })
-            const registerUserJson = await registerUserResponse.json()
+            // const registerUserJson = await registerUserResponse.json()
                 if(registerUserResponse.status === 201 || registerUserResponse.status === 200){
                     this.login(registerUser)
                 } else {
@@ -250,11 +250,12 @@ export default class CookbookContainer extends Component{
             try{
                 const url = process.env.REACT_APP_API_URL + "/pandemic-pantry/users/logout/"
                 const logoutResponse = await fetch(url)
-                const logoutJson = await logoutResponse.json()
+                // const logoutJson = await logoutResponse.json()
                 this.setState({
                     loggedInUser: null,
                     loggedIn: false,
-                    conditionalView: 'landing page'
+                    conditionalView: 'landing page',
+                    
     
                 })
                 // console.log(logoutJson)
